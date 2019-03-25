@@ -1,33 +1,69 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ElementsAnim : MonoBehaviour
 {
     public GameObject logo;
     public GameObject chains;
 
+    public List<GameObject> buttons;
+    private float pos;
+    
+    private bool buttonUp;
+    public bool clicked;
+
     // Start is called before the first frame update
     void Start()
     {
         logo.transform.position  =  new Vector3(transform.position.x, -6, 0);
         chains.transform.position = new Vector3(transform.position.x, -11.5f, 0);
+        
+        pos = -7.1f;
+
+        for (int i = 0; i < 5; i++)
+        {
+            buttons[i].transform.position = new Vector3(0.1f, pos, -1);
+            pos -= 1.5f;
+        }
+
+        clicked = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (logo.transform.position.y < 3.78)
+        if (logo.transform.position.y < 4.12)
         {
             float y = logo.transform.position.y + .1f;
             logo.transform.position = new Vector3(logo.transform.position.x, y, 0);
+            buttonUp = false;
         }
-
-        if (logo.transform.position.y >= 1 && chains.transform.position.y < -2.35)
+        
+        if (logo.transform.position.y >= 1 && chains.transform.position.y < -1.72)
         {
+            buttonUp = true;
             float y = chains.transform.position.y + .1f;
             chains.transform.position = new Vector3(logo.transform.position.x, y, 0);
-            Debug.Log(y);
+        }
+
+        if (buttons[0].transform.position.y <= 2.68 && buttonUp)
+        {
+            for (int i = 4; i >= 0; i--)
+            {
+                pos = buttons[i].transform.position.y + 0.1f;
+                buttons[i].transform.position = new Vector3(0.1f, pos, -1);
+            }
+        }
+
+        if (clicked)
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                Rigidbody2D sc = buttons[i].AddComponent(typeof(Rigidbody2D)) as Rigidbody2D;
+            }
+            clicked = false;
         }
     }
 }
