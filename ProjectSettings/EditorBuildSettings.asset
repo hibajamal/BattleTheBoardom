@@ -11,7 +11,28 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SplashScreen.unity
     guid: 3831e01ff2fc51f4d98f40d217adbe63
+  - enabled: 0
+    path: Assets/Scenes/play.unity
+    guid: fe843130172eaf249ac2099938e4c648
+  - enabled: 1
+    path: Assets/Scenes/AfterClickOnPlay.unity
+    guid: 6791cb2508a34a74e825acf995b82429
   - enabled: 1
     path: Assets/Scenes/InstructionsScreen.unity
     guid: c6592b0d75a168146813b11c5d5ad3cf
+  - enabled: 1
+    path: Assets/Scenes/1stQuadMain.unity
+    guid: 36eeb230dea13d24fa6abe4547d4cc18
+  - enabled: 1
+    path: Assets/Scenes/2ndQuad.unity
+    guid: 5ffb58463019f3749908853f6196b06e
+  - enabled: 1
+    path: Assets/Scenes/3rdQuad.unity
+    guid: d7dec9b4b0903604fbdf514421292315
+  - enabled: 1
+    path: Assets/Scenes/4thQuad.unity
+    guid: 38dd63f6aec77a84182741ec3f37be9f
+  - enabled: 1
+    path: Assets/Scenes/AfterAdvance.unity
+    guid: 431448bbbadf2aa4e923b541490f9a37
   m_configObjects: {}
