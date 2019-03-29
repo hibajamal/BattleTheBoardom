@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class ClickControl : MonoBehaviour
 {
     public GameObject settingsScreen = null;
+    public GameObject pauseScreen =null;
     
     public void OnMouseDown()
     {
@@ -22,6 +23,19 @@ public class ClickControl : MonoBehaviour
             Instantiate(settingsScreen);
             //peeche ka sab disable karo
         }
+        else if (gameObject.tag == "PauseButton")
+        {
+        	Debug.Log(123);
+        	Instantiate(pauseScreen);
+        }
+        if (gameObject.tag == "No")
+        {
+        	Destroy(pauseScreen);
+        }
+    }
+    public void openPause()
+    {
+    	Instantiate(pauseScreen);
     }
 
     IEnumerator Awaiting()
