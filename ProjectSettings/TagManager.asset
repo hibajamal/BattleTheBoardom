@@ -13,6 +13,7 @@ TagManager:
   - Disabled
   - PauseButton
   - No
+  - Quad1
   layers:
   - Default
   - TransparentFX
