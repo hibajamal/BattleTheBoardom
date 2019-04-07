@@ -61,7 +61,7 @@ public class ElementsAnim : MonoBehaviour
         {
             for (int i = 0; i < 5; i++)
             {
-                Rigidbody2D sc = buttons[i].gameObject.AddComponent(typeof(Rigidbody2D)) as Rigidbody2D;
+                Rigidbody2D sc = buttons[i].AddComponent(typeof(Rigidbody2D)) as Rigidbody2D;
             }
             clicked = false;
         }
