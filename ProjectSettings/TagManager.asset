@@ -18,6 +18,16 @@ TagManager:
   - Rifle
   - Pistol
   - Sniper
+  - top
+  - left
+  - right
+  - down
+  - topright
+  - topleft
+  - bottomleft
+  - bottomright
+  - Player1
+  - Player2
   layers:
   - Default
   - TransparentFX

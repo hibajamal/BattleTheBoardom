@@ -30,9 +30,7 @@ public class ClickControl : MonoBehaviour
     public Sprite PistolUI;
     public Sprite RifleUI;
     public Sprite SniperUI;
-
-
-
+    
     public RectTransform large;
 
     void Start()
@@ -481,22 +479,34 @@ public class ClickControl : MonoBehaviour
 
     public void RollDice()
     {
+        Player p1 = GameObject.FindGameObjectWithTag("Player1").GetComponent<Player>();
+        Player p2 = GameObject.FindGameObjectWithTag("Player2").GetComponent<Player>();
+        int a = 0;
+        
         if (Player1.activeSelf == true)
         {
-            Player2.SetActive(true);
+            a = Random.Range(1, 10);
             Player1.SetActive(false);
+            Player2.SetActive(true);
+            p2.enabled = true;
+            p2.diceCount = a;
+            p1.enabled = false;
+            Debug.Log("p2 set active "+a);
         }
         else if(Player2.activeSelf)
         {
+            a = Random.Range(1, 10);
             Player2.SetActive(false);
             Player1.SetActive(true);
+            p2.enabled = false;
+            p1.enabled = true;
+            p1.diceCount = a;
+            Debug.Log("p1 set active "+a);
         }
-
-        int a = Random.Range(1, 10);
-
+        
         this.transform.Find("Text").GetComponent<Text>().text = a.ToString();
     }
-
+    
     IEnumerator Awaiting()
     {
         print(Time.time);
