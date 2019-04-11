@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
@@ -8,6 +9,8 @@ using UnityEngine.SceneManagement;
 
 public class ClickControl : MonoBehaviour
 {
+    
+
     public GameObject WaitForConfirmation;
     public GameObject Buy;
     public GameObject CanvasForMainGame;
@@ -31,13 +34,115 @@ public class ClickControl : MonoBehaviour
     public Sprite RifleUI;
     public Sprite SniperUI;
     
+
+    /////////////////////
+
+    public GameObject TurnTime;
+    public GameObject OccurenceChance;
+    public GameObject OccurenceChest;
+    public GameObject OccurenceCoin;
+    public GameObject OccurenceQsand;
+    public GameObject OccurenceHelicopter;
+    public GameObject OccurenceEmpty;
+    public GameObject TurnNumMin;
+    public GameObject TurnNumMax;
+
     public RectTransform large;
 
     void Start()
     {
     	
     }
-    
+    public void IncreaseTime()
+    {
+        TurnTime.GetComponent<Text>().text = ((int.Parse(TurnTime.GetComponent<Text>().text) + 5)%30).ToString();
+
+    }
+    public void DecreaseTime()
+    {
+        if (int.Parse(TurnTime.GetComponent<Text>().text) <= 0)
+        {
+            TurnTime.GetComponent<Text>().text = "25";
+
+        }
+        else
+        {
+            TurnTime.GetComponent<Text>().text = ((int.Parse(TurnTime.GetComponent<Text>().text) - 5) % 30).ToString();
+        }
+        
+
+    }
+    public void Decrease()
+    {
+        if (int.Parse(TurnTime.GetComponent<Text>().text) == 0)
+        {
+            TurnTime.GetComponent<Text>().text = "18";
+        }
+        else
+        {
+            TurnTime.GetComponent<Text>().text = ((int.Parse(TurnTime.GetComponent<Text>().text) - 1)).ToString();
+        }
+
+    }
+    public void Increase()
+    {
+        if (int.Parse(TurnTime.GetComponent<Text>().text) == 18)
+        {
+            TurnTime.GetComponent<Text>().text = "0";
+        }
+        else
+        {
+            TurnTime.GetComponent<Text>().text = ((int.Parse(TurnTime.GetComponent<Text>().text) + 1)).ToString();
+        }
+    }
+    public void IncreaseMin()
+    {
+        if (int.Parse(TurnTime.GetComponent<Text>().text) == 10)
+        {
+            TurnTime.GetComponent<Text>().text = "0";
+        }
+        else
+        {
+            TurnTime.GetComponent<Text>().text = ((int.Parse(TurnTime.GetComponent<Text>().text) + 1)).ToString();
+        }
+    }
+    public void DecreaseMin()
+    {
+        if (int.Parse(TurnTime.GetComponent<Text>().text) == 0)
+        {
+            TurnTime.GetComponent<Text>().text = "10";
+        }
+        else
+        {
+            TurnTime.GetComponent<Text>().text = ((int.Parse(TurnTime.GetComponent<Text>().text) - 1)).ToString();
+        }
+
+    }
+    public void IncreaseMax()
+    {
+        if (int.Parse(TurnTime.GetComponent<Text>().text) == 20)
+        {
+            TurnTime.GetComponent<Text>().text = "11";
+        }
+        else
+        {
+            TurnTime.GetComponent<Text>().text = ((int.Parse(TurnTime.GetComponent<Text>().text) + 1)).ToString();
+        }
+    }
+    public void DecreaseMax()
+    {
+        if (int.Parse(TurnTime.GetComponent<Text>().text) == 11)
+        {
+            TurnTime.GetComponent<Text>().text = "20";
+        }
+        else
+        {
+            TurnTime.GetComponent<Text>().text = ((int.Parse(TurnTime.GetComponent<Text>().text) - 1)).ToString();
+        }
+
+    }
+
+
     public void OnMouseDown()
     {
         if (gameObject.tag != "Settings" && gameObject.tag != "Exit")
@@ -474,6 +579,18 @@ public class ClickControl : MonoBehaviour
     public void Alright()
     {
         InsufficientFunds.SetActive(false);
+    }
+    public void SetSetup()
+    {
+
+        StreamWriter writer = new StreamWriter("Assets/Setup/Setup.txt", false);
+        string temp = TurnTime.GetComponent<Text>().text + "\n" + OccurenceChance.GetComponent<Text>().text + "\n" +
+            OccurenceChest.GetComponent<Text>().text + "\n" + OccurenceCoin.GetComponent<Text>().text + "\n" + OccurenceQsand.GetComponent<Text>().text
+           + "\n" + OccurenceHelicopter.GetComponent<Text>().text + "\n" + TurnNumMin.GetComponent<Text>().text + "\n" + TurnNumMax.GetComponent<Text>().text;
+        Debug.Log(temp);
+        
+        writer.Write(temp);
+        writer.Close();
     }
 
 
