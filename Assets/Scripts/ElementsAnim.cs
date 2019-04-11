@@ -7,6 +7,9 @@ public class ElementsAnim : MonoBehaviour
 {
     public GameObject logo;
     public GameObject chains;
+    public GameObject blur;
+    public AudioSource Pop;
+
 
     public List<GameObject> buttons;
     private float pos;
@@ -20,6 +23,7 @@ public class ElementsAnim : MonoBehaviour
         logo.transform.position  =  new Vector3(transform.position.x, -6, 0);
         chains.transform.position = new Vector3(transform.position.x, -11.5f, 0);
         
+        
         pos = -7.1f;
 
         for (int i = 0; i < 5; i++)
@@ -28,17 +32,24 @@ public class ElementsAnim : MonoBehaviour
             pos -= 1.5f;
         }
 
+
+        
         clicked = false;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        
+            
         if (logo.transform.position.y < 4.12)
         {
             float y = logo.transform.position.y + .1f;
-            logo.transform.position = new Vector3(logo.transform.position.x, y, 0);
+            logo.transform.position = new Vector3(logo.transform.position.x, y, -1);
             buttonUp = false;
+            
+                
         }
         
         if (logo.transform.position.y >= 1 && chains.transform.position.y < -1.72)
@@ -46,7 +57,22 @@ public class ElementsAnim : MonoBehaviour
             buttonUp = true;
             float y = chains.transform.position.y + .1f;
             chains.transform.position = new Vector3(logo.transform.position.x, y, 0);
+            if (blur.activeSelf)
+            {
+                blur.SetActive(false);
+            }
+
+            
+
+
         }
+        if (logo.transform.position.y > -4.5f && logo.transform.position.y < -4.2f)
+        {
+            
+                Pop.Play();
+
+        }
+
 
         if (buttons[0].transform.position.y <= 2.68 && buttonUp)
         {
@@ -54,8 +80,12 @@ public class ElementsAnim : MonoBehaviour
             {
                 pos = buttons[i].transform.position.y + 0.1f;
                 buttons[i].transform.position = new Vector3(0.1f, pos, -1);
+                
             }
+            
         }
+
+
 
         if (clicked)
         {
@@ -64,6 +94,8 @@ public class ElementsAnim : MonoBehaviour
                 Rigidbody2D sc = buttons[i].AddComponent(typeof(Rigidbody2D)) as Rigidbody2D;
             }
             clicked = false;
+            
         }
+       
     }
 }
