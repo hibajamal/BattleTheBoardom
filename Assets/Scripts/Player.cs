@@ -1,11 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class Player : MonoBehaviour
 {
     public int PlayerID;    //IF 1 then keep p1 on top left corner then if 2 then keep on bottom rigth corner
 
+    /* stats player */
+    public GameObject stat;
+    
     private Block placedOnBlock;
     private MapGen map;
 
@@ -18,6 +23,12 @@ public class Player : MonoBehaviour
     private NavigationEase topleft;
     private NavigationEase bottomright;
     private NavigationEase bottomleft;
+
+    /*interactables*/
+    public List<GameObject> Chance;
+    public List<GameObject> treasureChest;
+
+    public int coinCount = 0;
 
     private bool playerSet;
 
@@ -103,6 +114,7 @@ public class Player : MonoBehaviour
                     placedOnBlock = b;
                     b.player = this;
                     flag = true;
+                    //PlayerInteraction();
                 }
                 if (flag)
                     break;
@@ -178,12 +190,37 @@ public class Player : MonoBehaviour
         if (flag)
         {
             b.player = null;
+            GameObject.FindObjectOfType<ClickControl>().transform.Find("Text").GetComponent<Text>().text = diceCount.ToString();
+            PlayerInteraction();
         }
         Debug.Log(direction + " " + diceCount + " " + PlayerID);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    void PlayerInteraction()
     {
-        Debug.Log(collision.gameObject);
+        if (placedOnBlock.ObjectPlaced != null)
+        {
+            if (placedOnBlock.ObjectPlaced.tag == "treasurechest")
+            {
+                // pop up treaure chest
+            }
+            else if (placedOnBlock.ObjectPlaced.tag == "chance")
+            {
+                //
+            }
+            else if (placedOnBlock.ObjectPlaced.tag == "coins")
+            {
+                coinCount++;
+                stat.transform.Find("Coin").Find("Number").GetComponent<Text>().text = coinCount.ToString();
+            }
+            else if (placedOnBlock.ObjectPlaced.tag == "helicopter")
+            {
+                // import helicopter list and place on associated helicopter
+            }
+            else if (placedOnBlock.ObjectPlaced.tag == "quicksand")
+            {
+                // lose health -2
+            }
+        }
     }
 }

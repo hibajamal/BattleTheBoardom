@@ -10,6 +10,15 @@ public class SoundPlay : MonoBehaviour
     {
         
     }
+    void Awake()
+    {
+        GameObject[] obj = GameObject.FindGameObjectsWithTag("music");
+        if (obj.Length>1)
+        {
+            Destroy(this.gameObject);
+        }
+        DontDestroyOnLoad(this.gameObject);
+    }
 
 
     // Update is called once per frame

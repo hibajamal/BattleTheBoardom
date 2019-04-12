@@ -28,6 +28,13 @@ TagManager:
   - bottomright
   - Player1
   - Player2
+  - treasurechest
+  - chance
+  - coins
+  - helicopter
+  - helipad
+  - quicksand
+  - music
   layers:
   - Default
   - TransparentFX

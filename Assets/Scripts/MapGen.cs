@@ -93,6 +93,7 @@ public class MapGen : MonoBehaviour
         //Vector3 worldStart = Camera.main.ScreenToWorldPoint(new Vector3(5, Screen.height));
         Vector3 worldStart = GetComponent<RectTransform>().transform.position;
 
+        Debug.Log(Screen.width);
 
         /* initialize quads */
         firstQuad = new List<Block>();
@@ -163,11 +164,11 @@ public class MapGen : MonoBehaviour
         CreateConnections();
         mapSet = true;
     }
-
-    // Update is called once per frame
-    void Update()
+    
+        // Update is called once per frame
+        void Update()
     {
-        //
+
     }
 
     void CreateConnections()

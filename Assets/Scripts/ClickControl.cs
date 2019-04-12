@@ -19,8 +19,14 @@ public class ClickControl : MonoBehaviour
     public GameObject Roll;
     public GameObject Market;
     public GameObject Back;
+
+
     public GameObject Player1;
     public GameObject Player2;
+    Player p1;
+    Player p2;
+    
+
     public GameObject GoBackOriginal1;
     public GameObject GoBackOriginal2;
     public GameObject GoBackOriginal3;
@@ -51,7 +57,7 @@ public class ClickControl : MonoBehaviour
 
     void Start()
     {
-    	
+        
     }
     public void IncreaseTime()
     {
@@ -596,8 +602,8 @@ public class ClickControl : MonoBehaviour
 
     public void RollDice()
     {
-        Player p1 = GameObject.FindGameObjectWithTag("Player1").GetComponent<Player>();
-        Player p2 = GameObject.FindGameObjectWithTag("Player2").GetComponent<Player>();
+        p1 = GameObject.FindGameObjectWithTag("Player1").GetComponent<Player>();
+        p2 = GameObject.FindGameObjectWithTag("Player2").GetComponent<Player>();
         int a = 0;
         
         if (Player1.activeSelf == true)
