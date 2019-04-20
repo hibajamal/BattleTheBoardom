@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class NavigationEase : MonoBehaviour
 {
+    public AudioSource clicksound;
     public bool topClicked = false;
     public bool leftClicked = false;
     public bool rightClicked = false;
@@ -17,6 +18,7 @@ public class NavigationEase : MonoBehaviour
 
     public void SendInfo()
     {
+        clicksound.Play();
         if (gameObject.tag == "top")
             topClicked = true;
         else if (gameObject.tag == "left")
@@ -34,4 +36,5 @@ public class NavigationEase : MonoBehaviour
         else if (gameObject.tag == "bottomleft")
             bottomleftClicked = true;
     }
+    
 }
