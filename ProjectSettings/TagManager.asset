@@ -35,6 +35,8 @@ TagManager:
   - helipad
   - quicksand
   - music
+  - button
+  - button2
   layers:
   - Default
   - TransparentFX

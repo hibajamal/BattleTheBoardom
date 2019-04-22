@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: 63437570}
   m_Layer: 5
   m_Name: Increase
-  m_TagString: Untagged
+  m_TagString: button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -163,6 +163,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a57cd14025cde3d4cae1dd44eed47fa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Playpress: {fileID: 0}
+  clickSound1: {fileID: 696028487}
+  clickSound2: {fileID: 0}
   WaitForConfirmation: {fileID: 0}
   Buy: {fileID: 0}
   CanvasForMainGame: {fileID: 0}
@@ -649,6 +652,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a57cd14025cde3d4cae1dd44eed47fa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Playpress: {fileID: 0}
+  clickSound1: {fileID: 696028487}
+  clickSound2: {fileID: 0}
   WaitForConfirmation: {fileID: 0}
   Buy: {fileID: 0}
   CanvasForMainGame: {fileID: 0}
@@ -783,9 +789,10 @@ GameObject:
   - component: {fileID: 323549823}
   - component: {fileID: 323549822}
   - component: {fileID: 323549821}
+  - component: {fileID: 323549824}
   m_Layer: 5
   m_Name: Default
-  m_TagString: Untagged
+  m_TagString: button2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -860,6 +867,17 @@ MonoBehaviour:
           m_StringArgument: Setup
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 323549824}
+        m_MethodName: playButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &323549822
@@ -899,6 +917,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 323549819}
   m_CullTransparentMesh: 0
+--- !u!114 &323549824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 323549819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a57cd14025cde3d4cae1dd44eed47fa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Playpress: {fileID: 0}
+  clickSound1: {fileID: 696028487}
+  clickSound2: {fileID: 1950610653}
+  WaitForConfirmation: {fileID: 0}
+  Buy: {fileID: 0}
+  CanvasForMainGame: {fileID: 0}
+  settingsScreen: {fileID: 0}
+  pauseScreen: {fileID: 0}
+  Roll: {fileID: 0}
+  Market: {fileID: 0}
+  Back: {fileID: 0}
+  Player1: {fileID: 0}
+  Player2: {fileID: 0}
+  GoBackOriginal1: {fileID: 0}
+  GoBackOriginal2: {fileID: 0}
+  GoBackOriginal3: {fileID: 0}
+  GoBackOriginal4: {fileID: 0}
+  Gun: {fileID: 0}
+  Rifle: {fileID: 0}
+  Sniper: {fileID: 0}
+  YouHaveNCoins: {fileID: 0}
+  InsufficientFunds: {fileID: 0}
+  PistolUI: {fileID: 0}
+  RifleUI: {fileID: 0}
+  SniperUI: {fileID: 0}
+  TurnTime: {fileID: 0}
+  OccurenceChance: {fileID: 0}
+  OccurenceChest: {fileID: 0}
+  OccurenceCoin: {fileID: 0}
+  OccurenceQsand: {fileID: 0}
+  OccurenceHelicopter: {fileID: 0}
+  OccurenceEmpty: {fileID: 0}
+  TurnNumMin: {fileID: 0}
+  TurnNumMax: {fileID: 0}
+  large: {fileID: 0}
 --- !u!1 &468371018
 GameObject:
   m_ObjectHideFlags: 0
@@ -980,7 +1045,7 @@ GameObject:
   - component: {fileID: 653085650}
   m_Layer: 5
   m_Name: Decrease (1)
-  m_TagString: Untagged
+  m_TagString: button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1016,6 +1081,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a57cd14025cde3d4cae1dd44eed47fa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Playpress: {fileID: 0}
+  clickSound1: {fileID: 696028487}
+  clickSound2: {fileID: 0}
   WaitForConfirmation: {fileID: 0}
   Buy: {fileID: 0}
   CanvasForMainGame: {fileID: 0}
@@ -1138,6 +1206,133 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 653085648}
   m_CullTransparentMesh: 0
+--- !u!1 &696028486
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 696028488}
+  - component: {fileID: 696028487}
+  m_Layer: 0
+  m_Name: click
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &696028487
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 696028486}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 39c76bbafe2c8254d8bca94623ce629c, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 0
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &696028488
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 696028486}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.48, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &725562065
 GameObject:
   m_ObjectHideFlags: 0
@@ -1485,7 +1680,7 @@ GameObject:
   - component: {fileID: 888453609}
   m_Layer: 5
   m_Name: Decrease
-  m_TagString: Untagged
+  m_TagString: button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1521,6 +1716,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a57cd14025cde3d4cae1dd44eed47fa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Playpress: {fileID: 0}
+  clickSound1: {fileID: 696028487}
+  clickSound2: {fileID: 0}
   WaitForConfirmation: {fileID: 0}
   Buy: {fileID: 0}
   CanvasForMainGame: {fileID: 0}
@@ -1737,7 +1935,7 @@ GameObject:
   - component: {fileID: 972337026}
   m_Layer: 5
   m_Name: Decrease
-  m_TagString: Untagged
+  m_TagString: button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1773,6 +1971,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a57cd14025cde3d4cae1dd44eed47fa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Playpress: {fileID: 0}
+  clickSound1: {fileID: 696028487}
+  clickSound2: {fileID: 0}
   WaitForConfirmation: {fileID: 0}
   Buy: {fileID: 0}
   CanvasForMainGame: {fileID: 0}
@@ -1987,7 +2188,7 @@ GameObject:
   - component: {fileID: 1144202511}
   m_Layer: 5
   m_Name: Decrease
-  m_TagString: Untagged
+  m_TagString: button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2023,6 +2224,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a57cd14025cde3d4cae1dd44eed47fa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Playpress: {fileID: 0}
+  clickSound1: {fileID: 696028487}
+  clickSound2: {fileID: 0}
   WaitForConfirmation: {fileID: 0}
   Buy: {fileID: 0}
   CanvasForMainGame: {fileID: 0}
@@ -2160,7 +2364,7 @@ GameObject:
   - component: {fileID: 1177915555}
   m_Layer: 5
   m_Name: Increase
-  m_TagString: Untagged
+  m_TagString: button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2196,6 +2400,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a57cd14025cde3d4cae1dd44eed47fa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Playpress: {fileID: 0}
+  clickSound1: {fileID: 696028487}
+  clickSound2: {fileID: 0}
   WaitForConfirmation: {fileID: 0}
   Buy: {fileID: 0}
   CanvasForMainGame: {fileID: 0}
@@ -2333,7 +2540,7 @@ GameObject:
   - component: {fileID: 1206270492}
   m_Layer: 5
   m_Name: Increase
-  m_TagString: Untagged
+  m_TagString: button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2369,6 +2576,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a57cd14025cde3d4cae1dd44eed47fa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Playpress: {fileID: 0}
+  clickSound1: {fileID: 696028487}
+  clickSound2: {fileID: 0}
   WaitForConfirmation: {fileID: 0}
   Buy: {fileID: 0}
   CanvasForMainGame: {fileID: 0}
@@ -2852,6 +3062,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a57cd14025cde3d4cae1dd44eed47fa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Playpress: {fileID: 0}
+  clickSound1: {fileID: 696028487}
+  clickSound2: {fileID: 0}
   WaitForConfirmation: {fileID: 0}
   Buy: {fileID: 0}
   CanvasForMainGame: {fileID: 0}
@@ -3068,7 +3281,7 @@ GameObject:
   - component: {fileID: 1579558767}
   m_Layer: 5
   m_Name: Decrease
-  m_TagString: Untagged
+  m_TagString: button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3104,6 +3317,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a57cd14025cde3d4cae1dd44eed47fa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Playpress: {fileID: 0}
+  clickSound1: {fileID: 696028487}
+  clickSound2: {fileID: 0}
   WaitForConfirmation: {fileID: 0}
   Buy: {fileID: 0}
   CanvasForMainGame: {fileID: 0}
@@ -3241,7 +3457,7 @@ GameObject:
   - component: {fileID: 1592321852}
   m_Layer: 5
   m_Name: Increase
-  m_TagString: Untagged
+  m_TagString: button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3277,6 +3493,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a57cd14025cde3d4cae1dd44eed47fa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Playpress: {fileID: 0}
+  clickSound1: {fileID: 696028487}
+  clickSound2: {fileID: 0}
   WaitForConfirmation: {fileID: 0}
   Buy: {fileID: 0}
   CanvasForMainGame: {fileID: 0}
@@ -3414,7 +3633,7 @@ GameObject:
   - component: {fileID: 1602431832}
   m_Layer: 5
   m_Name: Decrease
-  m_TagString: Untagged
+  m_TagString: button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3450,6 +3669,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a57cd14025cde3d4cae1dd44eed47fa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Playpress: {fileID: 0}
+  clickSound1: {fileID: 696028487}
+  clickSound2: {fileID: 0}
   WaitForConfirmation: {fileID: 0}
   Buy: {fileID: 0}
   CanvasForMainGame: {fileID: 0}
@@ -3664,7 +3886,7 @@ GameObject:
   - component: {fileID: 1654320181}
   m_Layer: 5
   m_Name: Increase (1)
-  m_TagString: Untagged
+  m_TagString: button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3700,6 +3922,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a57cd14025cde3d4cae1dd44eed47fa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Playpress: {fileID: 0}
+  clickSound1: {fileID: 696028487}
+  clickSound2: {fileID: 0}
   WaitForConfirmation: {fileID: 0}
   Buy: {fileID: 0}
   CanvasForMainGame: {fileID: 0}
@@ -3916,7 +4141,7 @@ GameObject:
   - component: {fileID: 1716538327}
   m_Layer: 5
   m_Name: Decrease
-  m_TagString: Untagged
+  m_TagString: button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3952,6 +4177,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a57cd14025cde3d4cae1dd44eed47fa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Playpress: {fileID: 0}
+  clickSound1: {fileID: 696028487}
+  clickSound2: {fileID: 0}
   WaitForConfirmation: {fileID: 0}
   Buy: {fileID: 0}
   CanvasForMainGame: {fileID: 0}
@@ -4323,6 +4551,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a57cd14025cde3d4cae1dd44eed47fa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Playpress: {fileID: 0}
+  clickSound1: {fileID: 0}
+  clickSound2: {fileID: 0}
   WaitForConfirmation: {fileID: 0}
   Buy: {fileID: 0}
   CanvasForMainGame: {fileID: 0}
@@ -4676,6 +4907,133 @@ MonoBehaviour:
   OccurenceQsand: {fileID: 1345955413}
   OccurenceHelicopter: {fileID: 1789694034}
   OccurenceEmpty: {fileID: 1778333597}
+--- !u!1 &1950610652
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1950610654}
+  - component: {fileID: 1950610653}
+  m_Layer: 0
+  m_Name: click2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &1950610653
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1950610652}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: ccee0b0e3cb945e42bfa8887238215bf, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 0
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &1950610654
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1950610652}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.48, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1979540971
 GameObject:
   m_ObjectHideFlags: 0
@@ -4691,7 +5049,7 @@ GameObject:
   - component: {fileID: 1979540973}
   m_Layer: 5
   m_Name: Increase
-  m_TagString: Untagged
+  m_TagString: button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4727,6 +5085,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a57cd14025cde3d4cae1dd44eed47fa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Playpress: {fileID: 0}
+  clickSound1: {fileID: 696028487}
+  clickSound2: {fileID: 0}
   WaitForConfirmation: {fileID: 0}
   Buy: {fileID: 0}
   CanvasForMainGame: {fileID: 0}
@@ -4864,7 +5225,7 @@ GameObject:
   - component: {fileID: 2029347636}
   m_Layer: 5
   m_Name: Increase
-  m_TagString: Untagged
+  m_TagString: button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4900,6 +5261,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a57cd14025cde3d4cae1dd44eed47fa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Playpress: {fileID: 0}
+  clickSound1: {fileID: 696028487}
+  clickSound2: {fileID: 0}
   WaitForConfirmation: {fileID: 0}
   Buy: {fileID: 0}
   CanvasForMainGame: {fileID: 0}
@@ -5038,7 +5402,7 @@ GameObject:
   - component: {fileID: 2082033919}
   m_Layer: 5
   m_Name: Tick
-  m_TagString: Untagged
+  m_TagString: button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5059,7 +5423,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 830, y: -456.6}
+  m_AnchoredPosition: {x: 839, y: -470}
   m_SizeDelta: {x: 218.6, y: 128.3}
   m_Pivot: {x: 0.5, y: 0.5000001}
 --- !u!114 &2082033915
@@ -5187,6 +5551,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a57cd14025cde3d4cae1dd44eed47fa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Playpress: {fileID: 0}
+  clickSound1: {fileID: 696028487}
+  clickSound2: {fileID: 0}
   WaitForConfirmation: {fileID: 0}
   Buy: {fileID: 0}
   CanvasForMainGame: {fileID: 0}
