@@ -208,7 +208,7 @@ public class Player : MonoBehaviour
 
     void PlayerInteraction()
     {
-        if (placedOnBlock.ObjectPlaced != null)
+        if (placedOnBlock.ObjectPlaced != null && placedOnBlock.obj != null)
         {
             Debug.Log(placedOnBlock.ObjectPlaced.tag);
             if (placedOnBlock.ObjectPlaced.tag == "treasurechest")
