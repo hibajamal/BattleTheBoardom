@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: 3809466}
   m_Layer: 5
   m_Name: Buy
-  m_TagString: Untagged
+  m_TagString: button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -253,6 +253,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a57cd14025cde3d4cae1dd44eed47fa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Playpress: {fileID: 0}
+  clickSound1: {fileID: 1727952497}
+  clickSound2: {fileID: 0}
   WaitForConfirmation: {fileID: 1899566325}
   Buy: {fileID: 3809461}
   CanvasForMainGame: {fileID: 0}
@@ -722,6 +725,7 @@ CircleCollider2D:
   m_Offset: {x: -3.22, y: 5.4}
   serializedVersion: 2
   m_Radius: 15.76
+  
 --- !u!1 &234328187
 GameObject:
   m_ObjectHideFlags: 0
@@ -735,13 +739,16 @@ GameObject:
   - component: {fileID: 234328189}
   m_Layer: 5
   m_Name: ChanceCard (7)
+
+
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
+RectTransform:
   m_IsActive: 0
 --- !u!224 &234328188
-RectTransform:
+AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -811,7 +818,7 @@ GameObject:
   - component: {fileID: 250160637}
   m_Layer: 5
   m_Name: Roll
-  m_TagString: Untagged
+  m_TagString: button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -833,8 +840,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 203.09961, y: 145.3999}
-  m_SizeDelta: {x: 406.2, y: 254.6}
+  m_AnchoredPosition: {x: 203.09961, y: 134.9}
+  m_SizeDelta: {x: 406.2, y: 233.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &250160634
 MonoBehaviour:
@@ -938,6 +945,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a57cd14025cde3d4cae1dd44eed47fa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Playpress: {fileID: 0}
+  clickSound1: {fileID: 1727952497}
+  clickSound2: {fileID: 0}
   WaitForConfirmation: {fileID: 0}
   Buy: {fileID: 0}
   CanvasForMainGame: {fileID: 0}
@@ -984,7 +994,7 @@ GameObject:
   - component: {fileID: 255349749}
   m_Layer: 5
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1126,6 +1136,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a57cd14025cde3d4cae1dd44eed47fa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Playpress: {fileID: 0}
+  clickSound1: {fileID: 240933925}
+  clickSound2: {fileID: 0}
   WaitForConfirmation: {fileID: 1899566325}
   Buy: {fileID: 3809461}
   CanvasForMainGame: {fileID: 0}
@@ -1441,6 +1454,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63a55719c95b47844bb8d6d7c37ea2f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clicksound: {fileID: 240933925}
   topClicked: 0
   leftClicked: 0
   rightClicked: 0
@@ -1648,6 +1662,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63a55719c95b47844bb8d6d7c37ea2f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clicksound: {fileID: 240933925}
   topClicked: 0
   leftClicked: 0
   rightClicked: 0
@@ -1871,6 +1886,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a57cd14025cde3d4cae1dd44eed47fa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Playpress: {fileID: 0}
+  clickSound1: {fileID: 0}
+  clickSound2: {fileID: 0}
   WaitForConfirmation: {fileID: 1899566325}
   Buy: {fileID: 0}
   CanvasForMainGame: {fileID: 0}
@@ -2618,7 +2636,7 @@ GameObject:
   - component: {fileID: 734828402}
   m_Layer: 5
   m_Name: RightButton
-  m_TagString: Untagged
+  m_TagString: button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2654,6 +2672,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a57cd14025cde3d4cae1dd44eed47fa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Playpress: {fileID: 0}
+  clickSound1: {fileID: 1727952497}
+  clickSound2: {fileID: 0}
   WaitForConfirmation: {fileID: 0}
   Buy: {fileID: 3809461}
   CanvasForMainGame: {fileID: 0}
@@ -3071,6 +3092,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63a55719c95b47844bb8d6d7c37ea2f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clicksound: {fileID: 240933925}
   topClicked: 0
   leftClicked: 0
   rightClicked: 0
@@ -3600,7 +3622,7 @@ GameObject:
   - component: {fileID: 980744361}
   m_Layer: 5
   m_Name: LeftButton
-  m_TagString: Untagged
+  m_TagString: button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3636,6 +3658,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a57cd14025cde3d4cae1dd44eed47fa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Playpress: {fileID: 0}
+  clickSound1: {fileID: 1727952497}
+  clickSound2: {fileID: 0}
   WaitForConfirmation: {fileID: 0}
   Buy: {fileID: 3809461}
   CanvasForMainGame: {fileID: 0}
@@ -3924,6 +3949,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a57cd14025cde3d4cae1dd44eed47fa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Playpress: {fileID: 0}
+  clickSound1: {fileID: 1727952497}
+  clickSound2: {fileID: 0}
   WaitForConfirmation: {fileID: 0}
   Buy: {fileID: 0}
   CanvasForMainGame: {fileID: 0}
@@ -4007,6 +4035,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63a55719c95b47844bb8d6d7c37ea2f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clicksound: {fileID: 240933925}
   topClicked: 0
   leftClicked: 0
   rightClicked: 0
@@ -4156,6 +4185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63a55719c95b47844bb8d6d7c37ea2f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clicksound: {fileID: 240933925}
   topClicked: 0
   leftClicked: 0
   rightClicked: 0
@@ -4458,6 +4488,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a57cd14025cde3d4cae1dd44eed47fa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Playpress: {fileID: 0}
+  clickSound1: {fileID: 240933925}
+  clickSound2: {fileID: 0}
   WaitForConfirmation: {fileID: 0}
   Buy: {fileID: 0}
   CanvasForMainGame: {fileID: 0}
@@ -4911,6 +4944,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63a55719c95b47844bb8d6d7c37ea2f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clicksound: {fileID: 240933925}
   topClicked: 0
   leftClicked: 0
   rightClicked: 0
@@ -6037,6 +6071,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a57cd14025cde3d4cae1dd44eed47fa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Playpress: {fileID: 0}
+  clickSound1: {fileID: 0}
+  clickSound2: {fileID: 0}
   WaitForConfirmation: {fileID: 0}
   Buy: {fileID: 0}
   CanvasForMainGame: {fileID: 0}
@@ -6167,7 +6204,7 @@ GameObject:
   - component: {fileID: 1643893801}
   m_Layer: 5
   m_Name: Market
-  m_TagString: Untagged
+  m_TagString: button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6293,6 +6330,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a57cd14025cde3d4cae1dd44eed47fa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Playpress: {fileID: 0}
+  clickSound1: {fileID: 1727952497}
+  clickSound2: {fileID: 0}
   WaitForConfirmation: {fileID: 0}
   Buy: {fileID: 3809461}
   CanvasForMainGame: {fileID: 1414836176}
@@ -6434,7 +6474,7 @@ GameObject:
   - component: {fileID: 1672210518}
   m_Layer: 0
   m_Name: Back
-  m_TagString: Untagged
+  m_TagString: button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6470,6 +6510,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a57cd14025cde3d4cae1dd44eed47fa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Playpress: {fileID: 0}
+  clickSound1: {fileID: 1727952497}
+  clickSound2: {fileID: 0}
   WaitForConfirmation: {fileID: 0}
   Buy: {fileID: 3809461}
   CanvasForMainGame: {fileID: 1414836176}
@@ -6592,6 +6635,133 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1672210516}
   m_CullTransparentMesh: 0
+--- !u!1 &1727952496
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1727952498}
+  - component: {fileID: 1727952497}
+  m_Layer: 0
+  m_Name: click
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &1727952497
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727952496}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 39c76bbafe2c8254d8bca94623ce629c, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 0
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &1727952498
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727952496}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.48, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1734563931
 GameObject:
   m_ObjectHideFlags: 0
@@ -6607,7 +6777,7 @@ GameObject:
   - component: {fileID: 1734563936}
   m_Layer: 5
   m_Name: Pause
-  m_TagString: PauseButton
+  m_TagString: button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6733,6 +6903,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a57cd14025cde3d4cae1dd44eed47fa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Playpress: {fileID: 0}
+  clickSound1: {fileID: 1727952497}
+  clickSound2: {fileID: 0}
   WaitForConfirmation: {fileID: 0}
   Buy: {fileID: 0}
   CanvasForMainGame: {fileID: 0}
@@ -7408,6 +7581,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63a55719c95b47844bb8d6d7c37ea2f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clicksound: {fileID: 240933925}
   topClicked: 0
   leftClicked: 0
   rightClicked: 0
@@ -7712,7 +7886,7 @@ PrefabInstance:
     - target: {fileID: 2280117039827408769, guid: 3ff4ba53bb4833f4a813bae6500fdc5c,
         type: 3}
       propertyPath: m_TagString
-      value: No
+      value: button
       objectReference: {fileID: 0}
     - target: {fileID: 7940621667422823796, guid: 3ff4ba53bb4833f4a813bae6500fdc5c,
         type: 3}
@@ -7781,6 +7955,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3567469047298006149, guid: 3ff4ba53bb4833f4a813bae6500fdc5c,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3567469047298006149, guid: 3ff4ba53bb4833f4a813bae6500fdc5c,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
@@ -7808,6 +7987,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
       value: SplashScreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 3567469047298006149, guid: 3ff4ba53bb4833f4a813bae6500fdc5c,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3567469047298006149, guid: 3ff4ba53bb4833f4a813bae6500fdc5c,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3567469047298006149, guid: 3ff4ba53bb4833f4a813bae6500fdc5c,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 463908029}
+    - target: {fileID: 3567469047298006149, guid: 3ff4ba53bb4833f4a813bae6500fdc5c,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: playButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 3567469047298006149, guid: 3ff4ba53bb4833f4a813bae6500fdc5c,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4163280970373017846, guid: 3ff4ba53bb4833f4a813bae6500fdc5c,
+        type: 3}
+      propertyPath: m_TagString
+      value: button
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ff4ba53bb4833f4a813bae6500fdc5c, type: 3}
@@ -7958,6 +8167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63a55719c95b47844bb8d6d7c37ea2f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clicksound: {fileID: 240933925}
   topClicked: 0
   leftClicked: 0
   rightClicked: 0

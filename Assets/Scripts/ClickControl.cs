@@ -9,7 +9,11 @@ using UnityEngine.SceneManagement;
 
 public class ClickControl : MonoBehaviour
 {
-    
+
+    public Sprite Playpress;
+    public AudioSource clickSound1;
+    public AudioSource clickSound2;
+
 
     public GameObject WaitForConfirmation;
     public GameObject Buy;
@@ -55,17 +59,27 @@ public class ClickControl : MonoBehaviour
 
     public RectTransform large;
 
+    public void playButton()
+    {
+
+        clickSound2.Play();
+        
+    }
     void Start()
     {
         
     }
     public void IncreaseTime()
     {
+        clickSound1.Play();
+
         TurnTime.GetComponent<Text>().text = ((int.Parse(TurnTime.GetComponent<Text>().text) + 5)%30).ToString();
 
     }
     public void DecreaseTime()
     {
+        clickSound1.Play();
+
         if (int.Parse(TurnTime.GetComponent<Text>().text) <= 0)
         {
             TurnTime.GetComponent<Text>().text = "25";
@@ -80,6 +94,8 @@ public class ClickControl : MonoBehaviour
     }
     public void Decrease()
     {
+        clickSound1.Play();
+
         if (int.Parse(TurnTime.GetComponent<Text>().text) == 0)
         {
             TurnTime.GetComponent<Text>().text = "18";
@@ -92,6 +108,8 @@ public class ClickControl : MonoBehaviour
     }
     public void Increase()
     {
+        clickSound1.Play();
+
         if (int.Parse(TurnTime.GetComponent<Text>().text) == 18)
         {
             TurnTime.GetComponent<Text>().text = "0";
@@ -103,6 +121,8 @@ public class ClickControl : MonoBehaviour
     }
     public void IncreaseMin()
     {
+        clickSound1.Play();
+
         if (int.Parse(TurnTime.GetComponent<Text>().text) == 10)
         {
             TurnTime.GetComponent<Text>().text = "0";
@@ -114,6 +134,8 @@ public class ClickControl : MonoBehaviour
     }
     public void DecreaseMin()
     {
+        clickSound1.Play();
+
         if (int.Parse(TurnTime.GetComponent<Text>().text) == 0)
         {
             TurnTime.GetComponent<Text>().text = "10";
@@ -126,6 +148,8 @@ public class ClickControl : MonoBehaviour
     }
     public void IncreaseMax()
     {
+        clickSound1.Play();
+
         if (int.Parse(TurnTime.GetComponent<Text>().text) == 20)
         {
             TurnTime.GetComponent<Text>().text = "11";
@@ -137,6 +161,7 @@ public class ClickControl : MonoBehaviour
     }
     public void DecreaseMax()
     {
+        clickSound1.Play();
         if (int.Parse(TurnTime.GetComponent<Text>().text) == 11)
         {
             TurnTime.GetComponent<Text>().text = "20";
@@ -154,10 +179,17 @@ public class ClickControl : MonoBehaviour
         if (gameObject.tag != "Settings" && gameObject.tag != "Exit")
         {
             print(gameObject.tag);
+            if (gameObject.tag=="Play")
+            {
+                clickSound2.Play();
+                gameObject.GetComponent<SpriteRenderer>().sprite = Playpress;
+                
+            }
             GameObject.Find("Background").GetComponent<ElementsAnim>().clicked = true;
             // invoke function for time delay before scene change
             StartCoroutine(Awaiting());
         }
+
         else if (gameObject.tag == "Settings")
         {
             Instantiate(settingsScreen);
@@ -169,7 +201,9 @@ public class ClickControl : MonoBehaviour
     }
     public void openPause()
     {
-    	pauseScreen.SetActive(true);
+        clickSound1.Play();
+
+        pauseScreen.SetActive(true);
     }
     public void ZoomQuad()
     {
@@ -306,6 +340,8 @@ public class ClickControl : MonoBehaviour
     }
     public void SellWeapon()
     {
+        clickSound1.Play();
+
         if (WaitForConfirmation.activeSelf)
         {
             WaitForConfirmation.SetActive(false);
@@ -355,10 +391,14 @@ public class ClickControl : MonoBehaviour
         
     public void closePause()
     {
-    	pauseScreen.SetActive(false);
+        clickSound1.Play();
+
+        pauseScreen.SetActive(false);
     }
     public void ChangeWeaponInMarketRight()
     {
+        clickSound1.Play();
+
 
         if (Gun.activeSelf)
         {
@@ -382,7 +422,7 @@ public class ClickControl : MonoBehaviour
     }
     public void ChangeWeaponInMarketLeft()
     {
-       
+        clickSound1.Play();
         if (Gun.activeSelf)
         {
             Gun.SetActive(false);
@@ -404,6 +444,7 @@ public class ClickControl : MonoBehaviour
     }
     public void openMarket()
     {
+        clickSound1.Play();
 
         HelperToCallInChangeWeapon();
         string temp;
@@ -427,6 +468,8 @@ public class ClickControl : MonoBehaviour
     }
     public void CloseMarket()
     {
+        clickSound1.Play();
+
         Buy.GetComponent<Button>().interactable = true;
         CanvasForMainGame.SetActive(true);
         Market.SetActive(false);
@@ -434,9 +477,10 @@ public class ClickControl : MonoBehaviour
     public void BuyWeapon()
     {
 
-        
-        
-        if(Gun.activeSelf == true)
+
+        clickSound1.Play();
+
+        if (Gun.activeSelf == true)
         {
             
             if (int.Parse(YouHaveNCoins.transform.Find("Number").GetComponent<Text>().text) < 10)
@@ -584,10 +628,13 @@ public class ClickControl : MonoBehaviour
     }
     public void Alright()
     {
+        clickSound1.Play();
+
         InsufficientFunds.SetActive(false);
     }
     public void SetSetup()
     {
+        clickSound1.Play();
 
         StreamWriter writer = new StreamWriter("Assets/Setup/Setup.txt", false);
         string temp = TurnTime.GetComponent<Text>().text + "\n" + OccurenceChance.GetComponent<Text>().text + "\n" +
@@ -602,6 +649,8 @@ public class ClickControl : MonoBehaviour
 
     public void RollDice()
     {
+        clickSound1.Play();
+
         p1 = GameObject.FindGameObjectWithTag("Player1").GetComponent<Player>();
         p2 = GameObject.FindGameObjectWithTag("Player2").GetComponent<Player>();
         int a = 0;
