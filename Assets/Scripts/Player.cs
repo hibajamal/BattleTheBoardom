@@ -6,6 +6,10 @@ using UnityEngine.EventSystems;
 
 public class Player : MonoBehaviour
 {
+    public Sprite PistolUI;
+    public Sprite RifleUI;
+    public Sprite SniperUI;
+    public Sprite KnifeUI;
     public int PlayerID;    //IF 1 then keep p1 on top left corner then if 2 then keep on bottom rigth corner
 
     /* stats player */
@@ -198,7 +202,9 @@ public class Player : MonoBehaviour
 
     void GenChance()
     {
-        FindObjectOfType<CardsScript>().GenChance();
+         
+         FindObjectOfType<CardsScript>().GenChance();
+        
     }
 
     void GenTreasure()
@@ -214,10 +220,55 @@ public class Player : MonoBehaviour
             if (placedOnBlock.ObjectPlaced.tag == "treasurechest")
             {
                 GenTreasure();
+                if (FindObjectOfType<CardsScript>().curr.tag == "Pistol")
+                {
+
+                    stat.transform.Find("WeaponUI").Find("CurrentWeapon").GetComponent<Image>().sprite = PistolUI;
+                    stat.transform.Find("WeaponUI").Find("CurrentWeapon").tag = "Pistol";
+
+                }
+                else if (FindObjectOfType<CardsScript>().curr.tag == "Rifle")
+                {
+                    stat.transform.Find("WeaponUI").Find("CurrentWeapon").GetComponent<Image>().sprite =RifleUI;
+                    stat.transform.Find("WeaponUI").Find("CurrentWeapon").tag = "Rifle";
+                }
+                else if (FindObjectOfType<CardsScript>().curr.tag == "Sniper")
+                {
+                    stat.transform.Find("WeaponUI").Find("CurrentWeapon").GetComponent<Image>().sprite = SniperUI;
+                    stat.transform.Find("WeaponUI").Find("CurrentWeapon").tag = "Sniper";
+                }
+                else if (FindObjectOfType<CardsScript>().curr.tag == "Drop")
+                {
+                    stat.transform.Find("WeaponUI").Find("CurrentWeapon").GetComponent<Image>().sprite = KnifeUI;
+                    stat.transform.Find("WeaponUI").Find("CurrentWeapon").tag = "Knife";
+                }
             }
             else if (placedOnBlock.ObjectPlaced.tag == "chance")
             {
                 GenChance();
+                if (FindObjectOfType<CardsScript>().curr.tag == "Pistol")
+                {
+
+                    stat.transform.Find("WeaponUI").Find("CurrentWeapon").GetComponent<Image>().sprite = PistolUI;
+                    stat.transform.Find("WeaponUI").Find("CurrentWeapon").tag = "Pistol";
+
+                }
+                else if (FindObjectOfType<CardsScript>().curr.tag == "Rifle")
+                {
+                    stat.transform.Find("WeaponUI").Find("CurrentWeapon").GetComponent<Image>().sprite = RifleUI;
+                    stat.transform.Find("WeaponUI").Find("CurrentWeapon").tag = "Rifle";
+                }
+                else if (FindObjectOfType<CardsScript>().curr.tag == "Sniper")
+                {
+                    stat.transform.Find("WeaponUI").Find("CurrentWeapon").GetComponent<Image>().sprite = SniperUI;
+                    stat.transform.Find("WeaponUI").Find("CurrentWeapon").tag = "Sniper";
+                }
+                else if (FindObjectOfType<CardsScript>().curr.tag == "Drop")
+                {
+                    stat.transform.Find("WeaponUI").Find("CurrentWeapon").GetComponent<Image>().sprite = KnifeUI;
+                    stat.transform.Find("WeaponUI").Find("CurrentWeapon").tag = "Knife";
+                }
+                    
             }
             else if (placedOnBlock.ObjectPlaced.tag == "coins")
             {

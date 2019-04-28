@@ -37,6 +37,11 @@ TagManager:
   - music
   - button
   - button2
+  - Drop
+  - StartPos
+  - GoBack3
+  - HealthMinusOne
+  - HealthMinusTwo
   layers:
   - Default
   - TransparentFX
