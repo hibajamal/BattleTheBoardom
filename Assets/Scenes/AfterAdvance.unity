@@ -4173,6 +4173,7 @@ GameObject:
   - component: {fileID: 1356761553}
   - component: {fileID: 1356761555}
   - component: {fileID: 1356761554}
+  - component: {fileID: 1356761556}
   m_Layer: 5
   m_Name: coins
   m_TagString: coins
@@ -4196,7 +4197,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1072, y: -0.000015258789}
+  m_AnchoredPosition: {x: -1030, y: -99}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1356761554
@@ -4236,6 +4237,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1356761552}
   m_CullTransparentMesh: 0
+--- !u!114 &1356761556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1356761552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0c876c5dffa66c4b95e8ef2c34a0c4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1414836176
 GameObject:
   m_ObjectHideFlags: 0
@@ -4644,14 +4657,14 @@ RectTransform:
   m_GameObject: {fileID: 1474526179}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1.0000145}
+  m_LocalScale: {x: 0.45, y: 0.45, z: 1.0000145}
   m_Children: []
   m_Father: {fileID: 1414836182}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1072, y: -0.000015258789}
+  m_AnchoredPosition: {x: -1000, y: -0.000015258789}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1474526181
@@ -7736,11 +7749,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7807270790492235681, guid: f71153a752662f54eb3d306e3f574609,
-        type: 3}
-      propertyPath: m_Name
-      value: chance2
-      objectReference: {fileID: 0}
     - target: {fileID: 2652191884059162083, guid: f71153a752662f54eb3d306e3f574609,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7846,6 +7854,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 7807270790492235681, guid: f71153a752662f54eb3d306e3f574609,
+        type: 3}
+      propertyPath: m_Name
+      value: chance2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f71153a752662f54eb3d306e3f574609, type: 3}
 --- !u!224 &4612666226475153274
@@ -7932,11 +7945,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 8323060188873946782, guid: 09190cbc582160d40b7907667b320581,
-        type: 3}
-      propertyPath: m_Name
-      value: chance3
-      objectReference: {fileID: 0}
     - target: {fileID: 4612666226475153274, guid: 09190cbc582160d40b7907667b320581,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8041,6 +8049,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8323060188873946782, guid: 09190cbc582160d40b7907667b320581,
+        type: 3}
+      propertyPath: m_Name
+      value: chance3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09190cbc582160d40b7907667b320581, type: 3}

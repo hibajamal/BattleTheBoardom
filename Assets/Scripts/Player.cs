@@ -196,26 +196,52 @@ public class Player : MonoBehaviour
         Debug.Log(direction + " " + diceCount + " " + PlayerID);
     }
 
+    void GenChance()
+    {
+        FindObjectOfType<CardsScript>().GenChance();
+    }
+
+    void GenTreasure()
+    {
+        FindObjectOfType<CardsScript>().GenTreasure();
+    }
+
     void PlayerInteraction()
     {
         if (placedOnBlock.ObjectPlaced != null)
         {
+            Debug.Log(placedOnBlock.ObjectPlaced.tag);
             if (placedOnBlock.ObjectPlaced.tag == "treasurechest")
             {
-                // pop up treaure chest
+                GenTreasure();
             }
             else if (placedOnBlock.ObjectPlaced.tag == "chance")
             {
-                //
+                GenChance();
             }
             else if (placedOnBlock.ObjectPlaced.tag == "coins")
             {
                 coinCount++;
                 stat.transform.Find("Coin").Find("Number").GetComponent<Text>().text = coinCount.ToString();
+                Destroy(placedOnBlock.ObjectPlaced);
+                placedOnBlock.ObjectPlaced = null;
+                map.GenerateCoinInTime(); 
             }
-            else if (placedOnBlock.ObjectPlaced.tag == "helicopter")
+            else if (placedOnBlock.ObjectPlaced.tag == "helicopter" && diceCount == 0)
             {
                 // import helicopter list and place on associated helicopter
+                foreach(Helicopter heli in map.helicopters)
+                {
+                    if (heli.helicopter == placedOnBlock.ObjectPlaced)
+                    {
+                        // get helipad and place player
+                        GetComponent<RectTransform>().transform.position = new Vector3(heli.helipad.GetComponent<RectTransform>().transform.position.x,
+                                                                                       heli.helipad.GetComponent<RectTransform>().transform.position.y, 
+                                                                                       0);
+                        placedOnBlock = heli.block;
+                        break;
+                    }
+                }
             }
             else if (placedOnBlock.ObjectPlaced.tag == "quicksand")
             {

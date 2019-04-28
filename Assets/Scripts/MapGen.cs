@@ -48,16 +48,19 @@ public class Helicopter
 {
     public GameObject helicopter;
     public GameObject helipad;
+    public Block block;
 
     public Helicopter()
     {
         helipad = helicopter = null;
+        block = null;
     }
 
     public Helicopter(GameObject h)
     {
         helicopter = h;
         helipad = null;
+        block = null;
     }
 };
 
@@ -78,7 +81,7 @@ public class MapGen : MonoBehaviour
     public bool mapSet = false;
 
     /* list containing helicopter-helipad sets */
-    List<Helicopter> helicopters = new List<Helicopter>();
+    public List<Helicopter> helicopters = new List<Helicopter>();
 
     /* list containing quadrants */
     public List<Block> firstQuad, secQuad, thirdQuad, fourthQuad;
@@ -92,9 +95,7 @@ public class MapGen : MonoBehaviour
         int i = 0;
         //Vector3 worldStart = Camera.main.ScreenToWorldPoint(new Vector3(5, Screen.height));
         Vector3 worldStart = GetComponent<RectTransform>().transform.position;
-
-        Debug.Log(Screen.width);
-
+        
         /* initialize quads */
         firstQuad = new List<Block>();
         secQuad = new List<Block>();
@@ -147,7 +148,9 @@ public class MapGen : MonoBehaviour
                         newBlock = Instantiate(blockSlopeNeg, this.transform);
                         block.type = 6;
                     }
-                    tileSize *= 0.28f;
+                    float factor = ((Screen.width * (0.004485f)) + (Screen.height * (-0.0075f)));
+                    tileSize *= factor;
+                    Debug.Log("Width: " + Screen.width+"+"+Screen.height+", factor: "+factor);
                     block.obj = newBlock;
                     newBlock.GetComponent<RectTransform>().transform.position = new Vector3(worldStart.x + tileSize / 2 + (tileSize * j), 
                                                               worldStart.y - tileSize / 2 - (tileSize * i), 
@@ -349,11 +352,12 @@ public class MapGen : MonoBehaviour
 
         foreach(Block q in b)
         {
-            if (q.ObjectPlaced != null)
+            if (q.ObjectPlaced == null && q.obj != null)
             {
                 q.ObjectPlaced = Instantiate(helipad, this.transform);
                 q.ObjectPlaced.GetComponent<RectTransform>().transform.position = q.obj.GetComponent<RectTransform>().transform.position;
                 helicopter.helipad = q.ObjectPlaced;
+                helicopter.block = q;
                 break;
             }
         }
@@ -384,4 +388,27 @@ public class MapGen : MonoBehaviour
             }
         }
     }
+
+    // random new coin to be generated after player steps on one
+    public void GenerateCoinInTime()
+    {
+        Invoke("GenerateCoin", 15);
+    }
+
+    void GenerateCoin()
+    {
+        foreach (Block b in blocks)
+        {
+            if (b.ObjectPlaced == null && b.obj != null)
+            {
+                Debug.Log("COIN GENERATED " + b.pos.x + " " + b.pos.y);
+                b.ObjectPlaced = Instantiate(coins, this.transform);
+                b.ObjectPlaced.GetComponent<RectTransform>().transform.position = new Vector3(b.obj.GetComponent<RectTransform>().transform.position.x,
+                                                                                           b.obj.GetComponent<RectTransform>().transform.position.y,
+                                                                                           0);
+                break;
+            }
+        }
+    }
+    
 }
