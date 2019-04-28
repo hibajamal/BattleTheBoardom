@@ -725,7 +725,6 @@ CircleCollider2D:
   m_Offset: {x: -3.22, y: 5.4}
   serializedVersion: 2
   m_Radius: 15.76
-  
 --- !u!1 &234328187
 GameObject:
   m_ObjectHideFlags: 0
@@ -739,16 +738,13 @@ GameObject:
   - component: {fileID: 234328189}
   m_Layer: 5
   m_Name: ChanceCard (7)
-
-
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-RectTransform:
   m_IsActive: 0
 --- !u!224 &234328188
-AudioSource:
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1454,7 +1450,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63a55719c95b47844bb8d6d7c37ea2f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clicksound: {fileID: 240933925}
+  clicksound: {fileID: 1727952497}
   topClicked: 0
   leftClicked: 0
   rightClicked: 0
@@ -1662,7 +1658,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63a55719c95b47844bb8d6d7c37ea2f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clicksound: {fileID: 240933925}
+  clicksound: {fileID: 1727952497}
   topClicked: 0
   leftClicked: 0
   rightClicked: 0
@@ -3092,7 +3088,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63a55719c95b47844bb8d6d7c37ea2f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clicksound: {fileID: 240933925}
+  clicksound: {fileID: 1727952497}
   topClicked: 0
   leftClicked: 0
   rightClicked: 0
@@ -4035,7 +4031,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63a55719c95b47844bb8d6d7c37ea2f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clicksound: {fileID: 240933925}
+  clicksound: {fileID: 1727952497}
   topClicked: 0
   leftClicked: 0
   rightClicked: 0
@@ -4185,7 +4181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63a55719c95b47844bb8d6d7c37ea2f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clicksound: {fileID: 240933925}
+  clicksound: {fileID: 1727952497}
   topClicked: 0
   leftClicked: 0
   rightClicked: 0
@@ -4489,7 +4485,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Playpress: {fileID: 0}
-  clickSound1: {fileID: 240933925}
+  clickSound1: {fileID: 1727952497}
   clickSound2: {fileID: 0}
   WaitForConfirmation: {fileID: 0}
   Buy: {fileID: 0}
@@ -4944,7 +4940,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63a55719c95b47844bb8d6d7c37ea2f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clicksound: {fileID: 240933925}
+  clicksound: {fileID: 1727952497}
   topClicked: 0
   leftClicked: 0
   rightClicked: 0
@@ -7581,7 +7577,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63a55719c95b47844bb8d6d7c37ea2f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clicksound: {fileID: 240933925}
+  clicksound: {fileID: 1727952497}
   topClicked: 0
   leftClicked: 0
   rightClicked: 0
@@ -8002,7 +7998,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 463908029}
+      objectReference: {fileID: 0}
     - target: {fileID: 3567469047298006149, guid: 3ff4ba53bb4833f4a813bae6500fdc5c,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
@@ -8167,7 +8163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63a55719c95b47844bb8d6d7c37ea2f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clicksound: {fileID: 240933925}
+  clicksound: {fileID: 1727952497}
   topClicked: 0
   leftClicked: 0
   rightClicked: 0
