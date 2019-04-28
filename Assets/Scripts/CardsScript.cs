@@ -7,7 +7,7 @@ public class CardsScript : MonoBehaviour
     public List<GameObject> ChanceCards;
     public List<GameObject> TreasureChest;
     Timer t;
-    GameObject curr;
+    public GameObject curr;
     public List<GameObject> PauseList;
 
     // Start is called before the first frame update
