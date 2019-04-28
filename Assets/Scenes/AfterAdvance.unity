@@ -1137,7 +1137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Playpress: {fileID: 0}
-  clickSound1: {fileID: 240933925}
+  clickSound1: {fileID: 0}
   clickSound2: {fileID: 0}
   WaitForConfirmation: {fileID: 1899566325}
   Buy: {fileID: 3809461}
