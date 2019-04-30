@@ -242,6 +242,22 @@ public class Player : MonoBehaviour
                     stat.transform.Find("WeaponUI").Find("CurrentWeapon").GetComponent<Image>().sprite = KnifeUI;
                     stat.transform.Find("WeaponUI").Find("CurrentWeapon").tag = "Knife";
                 }
+                else if (FindObjectOfType<CardsScript>().curr.tag == "HealthMinusOne")
+                {
+                    int a = int.Parse(stat.transform.Find("Health").Find("Number").GetComponent<Text>().text);
+                    a--;
+                    stat.transform.Find("Health").Find("Number").GetComponent<Text>().text = a.ToString();
+
+
+                }
+                else if (FindObjectOfType<CardsScript>().curr.tag == "HealthMinusTwo")
+                {
+                    int a = int.Parse(stat.transform.Find("Health").Find("Number").GetComponent<Text>().text);
+                    a-=2;
+                    stat.transform.Find("Health").Find("Number").GetComponent<Text>().text = a.ToString();
+
+
+                }
             }
             else if (placedOnBlock.ObjectPlaced.tag == "chance")
             {
@@ -268,7 +284,23 @@ public class Player : MonoBehaviour
                     stat.transform.Find("WeaponUI").Find("CurrentWeapon").GetComponent<Image>().sprite = KnifeUI;
                     stat.transform.Find("WeaponUI").Find("CurrentWeapon").tag = "Knife";
                 }
-                    
+                else if (FindObjectOfType<CardsScript>().curr.tag == "HealthMinusOne")
+                {
+                    int a = int.Parse(stat.transform.Find("Health").Find("Number").GetComponent<Text>().text);
+                    a--;
+                    stat.transform.Find("Health").Find("Number").GetComponent<Text>().text = a.ToString();
+
+
+                }
+                else if (FindObjectOfType<CardsScript>().curr.tag == "HealthMinusTwo")
+                {
+                    int a = int.Parse(stat.transform.Find("Health").Find("Number").GetComponent<Text>().text);
+                    a -= 2;
+                    stat.transform.Find("Health").Find("Number").GetComponent<Text>().text = a.ToString();
+
+
+                }
+
             }
             else if (placedOnBlock.ObjectPlaced.tag == "coins")
             {
