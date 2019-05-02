@@ -16,9 +16,13 @@ public class NavigationEase : MonoBehaviour
     public bool bottomleftClicked = false;
     public bool bottomrightClicked = false;
 
+    public bool shootClicked = false;
+    public bool knifeClicked = false;
+
     public void SendInfo()
     {
         clicksound.Play();
+
         if (gameObject.tag == "top")
             topClicked = true;
         else if (gameObject.tag == "left")
@@ -35,6 +39,9 @@ public class NavigationEase : MonoBehaviour
             bottomrightClicked = true;
         else if (gameObject.tag == "bottomleft")
             bottomleftClicked = true;
+        else if (gameObject.tag == "SHOOT")
+            shootClicked = knifeClicked = true;
+        Debug.Log(gameObject.tag+" "+shootClicked);
     }
     
 }

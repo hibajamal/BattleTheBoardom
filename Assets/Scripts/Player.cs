@@ -28,6 +28,8 @@ public class Player : MonoBehaviour
     private NavigationEase bottomright;
     private NavigationEase bottomleft;
 
+    private NavigationEase shoot;
+    private GameObject knife;
     /*interactables*/
     public List<GameObject> Chance;
     public List<GameObject> treasureChest;
@@ -37,6 +39,14 @@ public class Player : MonoBehaviour
     private bool playerSet;
 
     public int diceCount;
+
+
+    float currentPosition = 0;
+    bool newMove = true;
+
+    /* shooting */
+    public Transform firePoint;
+    public GameObject bullet;
 
     // Start is called before the first frame update
     void Start()
@@ -52,6 +62,9 @@ public class Player : MonoBehaviour
         bottomright = GameObject.FindObjectOfType<Nav2>().gameObject.transform.GetChild(2).gameObject.GetComponent<NavigationEase>();
         bottomleft = GameObject.FindObjectOfType<Nav2>().gameObject.transform.GetChild(3).gameObject.GetComponent<NavigationEase>();
 
+        shoot = GameObject.FindObjectOfType<Nav1>().gameObject.transform.GetChild(4).gameObject.GetComponent<NavigationEase>();
+        knife = GameObject.FindObjectOfType<Nav1>().gameObject.transform.GetChild(5).gameObject;
+
         playerSet = false;
         diceCount = 0;
     }
@@ -65,25 +78,52 @@ public class Player : MonoBehaviour
             SetPlayer(PlayerID);
             playerSet = true;   // player has been set hence this condition will never be true again
         }
-        
-        if (diceCount > 0)
+
+        if (diceCount > 0 && (right.rightClicked || left.leftClicked || down.downClicked || top.topClicked || topleft.topleftClicked 
+                                || topright.toprightClicked || bottomleft.bottomleftClicked || bottomright.bottomrightClicked) && playerSet)
         {
             if (right.rightClicked)
-                SetPlayerNewPosition(placedOnBlock, "r");
+                SetPlayerNewPosition("r");
             else if (left.leftClicked)
-                SetPlayerNewPosition(placedOnBlock, "l");
+                SetPlayerNewPosition("l");
             else if (top.topClicked)
-                SetPlayerNewPosition(placedOnBlock, "t");
+                SetPlayerNewPosition("t");
             else if (down.downClicked)
-                SetPlayerNewPosition(placedOnBlock, "b");
+                SetPlayerNewPosition("b");
             else if (topright.toprightClicked)
-                SetPlayerNewPosition(placedOnBlock, "tr");
+                SetPlayerNewPosition("tr");
             else if (topleft.topleftClicked)
-                SetPlayerNewPosition(placedOnBlock, "tl");
+                SetPlayerNewPosition("tl");
             else if (bottomleft.bottomleftClicked)
-                SetPlayerNewPosition(placedOnBlock, "bl");
+                SetPlayerNewPosition("bl");
             else if (bottomright.bottomrightClicked)
-                SetPlayerNewPosition(placedOnBlock, "br");
+                SetPlayerNewPosition("br");
+        }
+
+        if (shoot.shootClicked || knife.GetComponent<NavigationEase>().knifeClicked)
+        {
+            Debug.Log("knife or gubn im here");
+            Shoot();
+        }
+
+        if (diceCount == 0)
+        {
+            newMove = true;
+        }
+        else
+        {
+            newMove = false;
+        }
+
+        if (stat.transform.Find("WeaponUI").Find("CurrentWeapon").tag != "Knife")
+        {
+            knife.SetActive(false);
+            gun.SetActive(true);
+        }
+        else
+        {
+            gun.SetActive(false);
+            knife.SetActive(true);
         }
     }
   
@@ -99,6 +139,7 @@ public class Player : MonoBehaviour
                     GetComponent<RectTransform>().transform.position = new Vector3(b.obj.GetComponent<RectTransform>().transform.position.x,
                                                                                     b.obj.GetComponent<RectTransform>().transform.position.y, -1);
                     placedOnBlock = b;
+                    Debug.Log("player set " + PlayerID + " "+(b.right!=null));
                     b.player = this;
                     flag = true;
                 }
@@ -116,9 +157,9 @@ public class Player : MonoBehaviour
                     GetComponent<RectTransform>().transform.position = new Vector3(b.obj.GetComponent<RectTransform>().transform.position.x,
                                                                                     b.obj.GetComponent<RectTransform>().transform.position.y, -1);
                     placedOnBlock = b;
+                    Debug.Log("player set "+PlayerID);
                     b.player = this;
                     flag = true;
-                    //PlayerInteraction();
                 }
                 if (flag)
                     break;
@@ -126,75 +167,135 @@ public class Player : MonoBehaviour
         }
     }
 
-    void SetPlayerNewPosition(Block b, string direction)
+    void SetPlayerNewPosition(string direction)
     {
         bool flag = true;
         diceCount--;
-        if (direction == "r" && b.right != null)
+        Debug.Log("CURRENT POSITION BEFORE MOVEMNET::::::"+currentPosition);
+        if (direction == "r" && placedOnBlock.right != null)
         {
-            GetComponent<RectTransform>().transform.position = new Vector3(b.right.obj.GetComponent<RectTransform>().transform.position.x, b.right.obj.transform.position.y, 0);
-            b.right.player = this;
-            placedOnBlock = b.right;
+            GetComponent<RectTransform>().transform.position = new Vector3(placedOnBlock.right.obj.GetComponent<RectTransform>().transform.position.x, 
+                                                                           placedOnBlock.right.obj.transform.position.y, 0);
+            if (!newMove) GetComponent<RectTransform>().transform.Rotate(0, 0, -currentPosition);
+            if (PlayerID == 2)
+            {
+                currentPosition = 270;
+                GetComponent<RectTransform>().transform.Rotate(new Vector3(0, 0, currentPosition));
+            }
+            else
+            {
+                currentPosition = 0;
+                GetComponent<RectTransform>().transform.Rotate(new Vector3(0, 0, 0));
+            }
+            placedOnBlock.right.player = this;
+            placedOnBlock = placedOnBlock.right;
             right.rightClicked = false;
         }
-        else if (direction == "l" && b.left != null)
+        else if (direction == "l" && placedOnBlock.left != null)
         {
-            GetComponent<RectTransform>().transform.position = new Vector3(b.left.obj.GetComponent<RectTransform>().transform.position.x, b.left.obj.transform.position.y, 0);
-            b.left.player = this;
-            placedOnBlock = b.left;
+            GetComponent<RectTransform>().transform.position = new Vector3(placedOnBlock.left.obj.GetComponent<RectTransform>().transform.position.x, 
+                                                                            placedOnBlock.left.obj.transform.position.y, 0);
+
+            if (!newMove) GetComponent<RectTransform>().transform.Rotate(0,0,-currentPosition);
+            if (PlayerID == 2)
+            {
+                currentPosition = 90;
+                GetComponent<RectTransform>().transform.Rotate(new Vector3 (0, 0, 90));
+            }
+            else
+            {
+                currentPosition = 180;
+                GetComponent<RectTransform>().transform.Rotate(new Vector3(0, 0, 180));
+            }
+            placedOnBlock.left.player = this;
+            placedOnBlock = placedOnBlock.left;
             left.leftClicked = false;
         }
-        else if (direction == "t" && b.top != null)
+        else if (direction == "t" && placedOnBlock.top != null)
         {
-            GetComponent<RectTransform>().transform.position = new Vector3(b.top.obj.GetComponent<RectTransform>().transform.position.x, b.top.obj.transform.position.y, 0);
-            b.top.player = this;
-            placedOnBlock = b.top;
+            GetComponent<RectTransform>().transform.position = new Vector3(placedOnBlock.top.obj.GetComponent<RectTransform>().transform.position.x, 
+                                                                            placedOnBlock.top.obj.transform.position.y, 0);
+            if (!newMove) GetComponent<RectTransform>().transform.Rotate(0, 0, -currentPosition);
+            if (PlayerID == 2)
+            {
+                currentPosition = 0;
+                GetComponent<RectTransform>().transform.Rotate(new Vector3(0, 0, currentPosition));
+            }
+            else
+            {
+                currentPosition = 90;
+                GetComponent<RectTransform>().transform.Rotate(new Vector3(0, 0, currentPosition));
+            }
+            placedOnBlock.top.player = this;
+            placedOnBlock = placedOnBlock.top;
             top.topClicked = false;
         }
-        else if (direction == "b" && b.bottom != null)
+        else if (direction == "b" && placedOnBlock.bottom != null)
         {
-            GetComponent<RectTransform>().transform.position = new Vector3(b.bottom.obj.GetComponent<RectTransform>().transform.position.x, b.bottom.obj.transform.position.y, 0);
-            b.bottom.player = this;
-            placedOnBlock = b.bottom;
+            GetComponent<RectTransform>().transform.position = new Vector3(placedOnBlock.bottom.obj.GetComponent<RectTransform>().transform.position.x,
+                                                                            placedOnBlock.bottom.obj.transform.position.y, 0);
+            if (!newMove) GetComponent<RectTransform>().transform.Rotate(0, 0, -currentPosition);
+            if (PlayerID == 2)
+            {
+                currentPosition = 180;
+                GetComponent<RectTransform>().transform.Rotate(new Vector3(0, 0, currentPosition));
+            }
+            else
+            {
+                currentPosition = 270;
+                GetComponent<RectTransform>().transform.Rotate(new Vector3(0, 0, currentPosition));
+            }
+            placedOnBlock.bottom.player = this;
+            placedOnBlock = placedOnBlock.bottom;
             down.downClicked = false;
         }
-        else if (direction == "tr" && b.diagonalTopRight != null) // top-right
+        else if (direction == "tr" && placedOnBlock.diagonalTopRight != null) // top-right
         {
-            GetComponent<RectTransform>().transform.position = new Vector3(b.diagonalTopRight.obj.GetComponent<RectTransform>().transform.position.x, b.diagonalTopRight.obj.transform.position.y, 0);
-            b.diagonalTopRight.player = this;
-            placedOnBlock = b.diagonalTopRight;
+            GetComponent<RectTransform>().transform.position = new Vector3(placedOnBlock.diagonalTopRight.obj.GetComponent<RectTransform>().transform.position.x, 
+                                                                            placedOnBlock.diagonalTopRight.obj.transform.position.y, 0);
+            placedOnBlock.diagonalTopRight.player = this;
+            placedOnBlock = placedOnBlock.diagonalTopRight;
             topright.toprightClicked = false;
         }
-        else if (direction == "tl" && b.diagonalTopLeft != null)    // top - left
+        else if (direction == "tl" && placedOnBlock.diagonalTopLeft != null)    // top - left
         {
-            GetComponent<RectTransform>().transform.position = new Vector3(b.diagonalTopLeft.obj.GetComponent<RectTransform>().transform.position.x, b.diagonalTopLeft.obj.transform.position.y, 0);
-            b.diagonalTopLeft.player = this;
-            placedOnBlock = b.diagonalTopLeft;
+            GetComponent<RectTransform>().transform.position = new Vector3(placedOnBlock.diagonalTopLeft.obj.GetComponent<RectTransform>().transform.position.x, 
+                                                                            placedOnBlock.diagonalTopLeft.obj.transform.position.y, 0);
+            
+            placedOnBlock.diagonalTopLeft.player = this;
+            placedOnBlock = placedOnBlock.diagonalTopLeft;
             topleft.topleftClicked = false;
         }
-        else if (direction == "br" && b.diagonalBottomRight != null)    // bottom-right
+        else if (direction == "br" && placedOnBlock.diagonalBottomRight != null)    // bottom-right
         {
-            GetComponent<RectTransform>().transform.position = new Vector3(b.diagonalBottomRight.obj.GetComponent<RectTransform>().transform.position.x, b.diagonalBottomRight.obj.transform.position.y, 0);
-            b.diagonalBottomRight.player = this;
-            placedOnBlock = b.diagonalBottomRight;
+            GetComponent<RectTransform>().transform.position = new Vector3(placedOnBlock.diagonalBottomRight.obj.GetComponent<RectTransform>().transform.position.x, 
+                                                                            placedOnBlock.diagonalBottomRight.obj.transform.position.y, 0);
+            
+            placedOnBlock.diagonalBottomRight.player = this;
+            placedOnBlock = placedOnBlock.diagonalBottomRight;
             bottomright.bottomrightClicked = false;
         }
-        else if (direction == "bl" && b.diagonalBottomLeft != null)    // bottom-left
+        else if (direction == "bl" && placedOnBlock.diagonalBottomLeft != null)    // bottom-left
         {
-            GetComponent<RectTransform>().transform.position = new Vector3(b.diagonalBottomLeft.obj.GetComponent<RectTransform>().transform.position.x, b.diagonalBottomLeft.obj.transform.position.y, 0);
-            b.diagonalBottomLeft.player = this;
-            placedOnBlock = b.diagonalBottomLeft;
+            GetComponent<RectTransform>().transform.position = new Vector3(placedOnBlock.diagonalBottomLeft.obj.GetComponent<RectTransform>().transform.position.x, 
+                                                                            placedOnBlock.diagonalBottomLeft.obj.transform.position.y, 0);
+            
+            placedOnBlock.diagonalBottomLeft.player = this;
+            placedOnBlock = placedOnBlock.diagonalBottomLeft;
             bottomleft.bottomleftClicked = false;
         }
         else
         {
             flag = false;
             diceCount++;
+            right.rightClicked = left.leftClicked = top.topClicked = down.downClicked =
+                topright.toprightClicked = topleft.topleftClicked = bottomleft.bottomleftClicked = bottomright.bottomrightClicked = false;
         }
         if (flag)
         {
-            b.player = null;
+            placedOnBlock.player = null;
             GameObject.FindObjectOfType<ClickControl>().transform.Find("Text").GetComponent<Text>().text = diceCount.ToString();
+            Debug.Log("Current Rotation:::: "+currentPosition);
             PlayerInteraction();
         }
         Debug.Log(direction + " " + diceCount + " " + PlayerID);
@@ -217,7 +318,7 @@ public class Player : MonoBehaviour
         if (placedOnBlock.ObjectPlaced != null && placedOnBlock.obj != null)
         {
             Debug.Log(placedOnBlock.ObjectPlaced.tag);
-            if (placedOnBlock.ObjectPlaced.tag == "treasurechest")
+            if (placedOnBlock.ObjectPlaced.tag == "treasurechest" && diceCount == 0)
             {
                 GenTreasure();
                 if (FindObjectOfType<CardsScript>().curr.tag == "Pistol")
@@ -259,7 +360,7 @@ public class Player : MonoBehaviour
 
                 }
             }
-            else if (placedOnBlock.ObjectPlaced.tag == "chance")
+            else if (placedOnBlock.ObjectPlaced.tag == "chance" && diceCount == 0)
             {
                 GenChance();
                 if (FindObjectOfType<CardsScript>().curr.tag == "Pistol")
@@ -297,8 +398,6 @@ public class Player : MonoBehaviour
                     int a = int.Parse(stat.transform.Find("Health").Find("Number").GetComponent<Text>().text);
                     a -= 2;
                     stat.transform.Find("Health").Find("Number").GetComponent<Text>().text = a.ToString();
-
-
                 }
 
             }
@@ -326,10 +425,64 @@ public class Player : MonoBehaviour
                     }
                 }
             }
-            else if (placedOnBlock.ObjectPlaced.tag == "quicksand")
+            else if (placedOnBlock.ObjectPlaced.tag == "quicksand" && diceCount == 0)
             {
-                // lose health -2
+                int a = int.Parse(stat.transform.Find("Health").Find("Number").GetComponent<Text>().text);
+                a -= 2;
+                stat.transform.Find("Health").Find("Number").GetComponent<Text>().text = a.ToString();
             }
         }
+    }
+
+    GameObject bullet2;
+    public GameObject knifeWeapon;
+    public GameObject gun;
+    public Block clicked;
+    public Sprite darkCircle;
+
+    void Shoot()
+    {
+        if (stat.transform.Find("WeaponUI").Find("CurrentWeapon").tag == "Knife")
+        {
+            float angle = 0;
+            /*while (angle < 20000)
+            {
+                transform.Rotate(0, 0, 0.1f);
+                angle += 0.1f;
+            }*/
+            Debug.Log(angle);
+        }
+        else
+        {
+            FindObjectOfType<BackgroundControl>().normalModeActive = false;
+            //transform.GetChild(3).gameObject.SetActive(true);
+            bullet2 = Instantiate(bullet, this.transform);
+            bullet2.SetActive(true);
+            Rigidbody2D rb = bullet2.GetComponent<Rigidbody2D>();
+
+            rb.velocity = bullet2.transform.up * 800;
+            StartCoroutine(BulletBack());
+            if (stat.transform.Find("WeaponUI").Find("CurrentWeapon").tag == "Pistol")
+            {
+                // range 4 blocks
+                
+            }
+            else if (stat.transform.Find("WeaponUI").Find("CurrentWeapon").tag == "Rifle")
+            {
+                // range 6 blocks
+            }
+            else if (stat.transform.Find("WeaponUI").Find("CurrentWeapon").tag == "Sniper")
+            {
+                // range 8 blocks
+            }
+        }
+        shoot.shootClicked = knife.GetComponent<NavigationEase>().knifeClicked = false;
+    }
+
+    IEnumerator BulletBack()
+    {
+        yield return new WaitForSeconds(5);
+        Destroy(bullet2);
+        FindObjectOfType<BackgroundControl>().normalModeActive = true;
     }
 }
