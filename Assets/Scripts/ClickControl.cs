@@ -650,12 +650,13 @@ public class ClickControl : MonoBehaviour
     public void RollDice()
     {
         clickSound1.Play();
-
         p1 = GameObject.FindGameObjectWithTag("Player1").GetComponent<Player>();
         p2 = GameObject.FindGameObjectWithTag("Player2").GetComponent<Player>();
         int a = 0;
+
+        bool enteredCondition = false;
         
-        if (Player1.activeSelf == true)
+        if (Player1.activeSelf && p1.diceCount == 0)
         {
             a = Random.Range(1, 10);
             Player1.SetActive(false);
@@ -664,8 +665,9 @@ public class ClickControl : MonoBehaviour
             p2.diceCount = a;
             p1.enabled = false;
             Debug.Log("p2 set active "+a);
+            enteredCondition = true;
         }
-        else if(Player2.activeSelf)
+        else if(Player2.activeSelf && p2.diceCount == 0)
         {
             a = Random.Range(1, 10);
             Player2.SetActive(false);
@@ -674,9 +676,19 @@ public class ClickControl : MonoBehaviour
             p1.enabled = true;
             p1.diceCount = a;
             Debug.Log("p1 set active "+a);
+            enteredCondition = true;
         }
         
-        this.transform.Find("Text").GetComponent<Text>().text = a.ToString();
+        if (enteredCondition)
+        {
+            this.transform.Find("Text").GetComponent<Text>().text = a.ToString();
+            FindObjectOfType<StatBar>().gameObject.transform.GetChild(3).gameObject.SetActive(false);
+        }
+        else
+        {
+            FindObjectOfType<StatBar>().gameObject.transform.GetChild(3).gameObject.SetActive(true);
+            StartCoroutine(textReturn());
+        }
     }
     
     IEnumerator Awaiting()
@@ -699,4 +711,9 @@ public class ClickControl : MonoBehaviour
         
     }
 
+    IEnumerator textReturn()
+    {
+        yield return new WaitForSeconds(3);
+        FindObjectOfType<StatBar>().gameObject.transform.GetChild(3).gameObject.SetActive(false);
+    }
 }

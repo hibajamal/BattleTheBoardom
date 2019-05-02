@@ -150,7 +150,7 @@ public class MapGen : MonoBehaviour
                     }
                     float factor = ((Screen.width * (0.004485f)) + (Screen.height * (-0.0075f)));
                     tileSize *= factor;
-                    Debug.Log("Width: " + Screen.width+"+"+Screen.height+", factor: "+factor);
+
                     block.obj = newBlock;
                     newBlock.GetComponent<RectTransform>().transform.position = new Vector3(worldStart.x + tileSize / 2 + (tileSize * j), 
                                                               worldStart.y - tileSize / 2 - (tileSize * i), 
@@ -171,7 +171,7 @@ public class MapGen : MonoBehaviour
         // Update is called once per frame
         void Update()
     {
-
+        //
     }
 
     void CreateConnections()
@@ -220,7 +220,11 @@ public class MapGen : MonoBehaviour
             {
                 if (blocks[check].type == 0 || blocks[check].type == 3 || blocks[check].type == 4)
                     if (blocks[check].obj != null)
+                    {
                         b.right = blocks[check];
+                        if (b.pos.x == 0 && b.pos.y == 0)
+                            Debug.Log("connected");
+                    }
             }
 
             check = i + (20-1); // check diagonal bottom left
@@ -251,7 +255,8 @@ public class MapGen : MonoBehaviour
             {
                 //place object with random probability 
                 int a = Random.Range(0, 100);
-                PlaceObjectRandomly(b, a);
+                if (b.ObjectPlaced == null)
+                    PlaceObjectRandomly(b, a);
                 
             }
         }

@@ -42,6 +42,8 @@ TagManager:
   - GoBack3
   - HealthMinusOne
   - HealthMinusTwo
+  - SHOOT
+  - statBar
   layers:
   - Default
   - TransparentFX
