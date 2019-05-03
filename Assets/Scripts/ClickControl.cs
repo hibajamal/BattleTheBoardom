@@ -204,6 +204,7 @@ public class ClickControl : MonoBehaviour
         clickSound1.Play();
 
         pauseScreen.SetActive(true);
+        GameObject.FindObjectOfType<Timer>().paused = true;
     }
     public void ZoomQuad()
     {
@@ -394,6 +395,7 @@ public class ClickControl : MonoBehaviour
         clickSound1.Play();
 
         pauseScreen.SetActive(false);
+        GameObject.FindObjectOfType<Timer>().paused = false;
     }
     public void ChangeWeaponInMarketRight()
     {

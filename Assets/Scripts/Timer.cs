@@ -14,7 +14,7 @@ public class Timer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        t = 120f;
+        t = 300f;
     }
 
     // Update is called once per frame
@@ -28,8 +28,15 @@ public class Timer : MonoBehaviour
             if (t <= 0)
             {
                 gameover.SetActive(true);
-                SceneManager.LoadScene("SplashScreen");
+                paused = true;
+                StartCoroutine(waitShow());
             }
         }
+    }
+
+    IEnumerator waitShow()
+    {
+        yield return new WaitForSeconds(4);
+        SceneManager.LoadScene("SplashScreen");
     }
 }
