@@ -26,7 +26,7 @@ public class ElementsAnim : MonoBehaviour
         
         pos = -7.1f;
 
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 4; i++)
         {
             buttons[i].transform.position = new Vector3(0.1f, pos, -1);
             pos -= 1.5f;
@@ -52,7 +52,7 @@ public class ElementsAnim : MonoBehaviour
                 
         }
         
-        if (logo.transform.position.y >= 1 && chains.transform.position.y < -1.72)
+        if (logo.transform.position.y >= 1 && chains.transform.position.y < -.5)
         {
             buttonUp = true;
             float y = chains.transform.position.y + .1f;
@@ -76,7 +76,7 @@ public class ElementsAnim : MonoBehaviour
 
         if (buttons[0].transform.position.y <= 2.68 && buttonUp)
         {
-            for (int i = 4; i >= 0; i--)
+            for (int i = 3; i >= 0; i--)
             {
                 pos = buttons[i].transform.position.y + 0.1f;
                 buttons[i].transform.position = new Vector3(0.1f, pos, -1);
@@ -89,7 +89,7 @@ public class ElementsAnim : MonoBehaviour
 
         if (clicked)
         {
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 4; i++)
             {
                 Rigidbody2D sc = buttons[i].AddComponent(typeof(Rigidbody2D)) as Rigidbody2D;
             }
