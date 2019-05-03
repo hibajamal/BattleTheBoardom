@@ -6,9 +6,11 @@ using UnityEngine.UI;
 
 public class WeaponShoot : MonoBehaviour, IPointerDownHandler
 {
+    Player p1, p2;
     private void Start()
     {
-        
+        p1 = GameObject.FindGameObjectWithTag("Player1").GetComponent<Player>();
+        p2 = GameObject.FindGameObjectWithTag("Player2").GetComponent<Player>();
     }
     // Update is called once per frame
     void Update()
@@ -20,14 +22,19 @@ public class WeaponShoot : MonoBehaviour, IPointerDownHandler
     /// </summary>
     public void OnPointerDown(PointerEventData eventData)
     {
+        /*
         foreach (Block b in FindObjectOfType<MapGen>().blocks)
         {
             if (b.obj != null && b.obj.GetComponent<RectTransform>().transform.position == this.GetComponent<RectTransform>().transform.position)
             {
-                FindObjectOfType<Player>().GetComponent<Player>().clicked = b;
+                if (p1.enabled)
+                    p1.clicked = b;
+                else
+                    p2.clicked = b;
                 Debug.Log(b.pos.x+", "+b.pos.y);
                 break;
             }
         }
+        */
     }
 }

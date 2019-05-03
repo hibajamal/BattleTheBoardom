@@ -24,7 +24,7 @@ public class CardsScript : MonoBehaviour
 
     public void GenChance()
     {
-        int a = Random.Range(0,9);
+        int a = Random.Range(0,4);
         ChanceCards[a].SetActive(true);
         PauseEverything();
         curr = ChanceCards[a];

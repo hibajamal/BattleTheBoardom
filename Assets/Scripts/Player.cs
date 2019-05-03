@@ -99,10 +99,18 @@ public class Player : MonoBehaviour
             else if (bottomright.bottomrightClicked)
                 SetPlayerNewPosition("br");
         }
-
-        if (shoot.shootClicked || knife.GetComponent<NavigationEase>().knifeClicked)
+        
+        if (diceCount == 0 && (shoot.shootClicked || knife.GetComponent<NavigationEase>().knifeClicked) && !top.topClicked
+            && !down.downClicked && !left.leftClicked
+            && !right.rightClicked && !prefaceShootOnce)
         {
-            Debug.Log("knife or gubn im here");
+            ShootPreface();
+        }
+        else if (diceCount == 0 && (shoot.shootClicked || knife.GetComponent<NavigationEase>().knifeClicked) && (top.topClicked
+            || down.downClicked || left.leftClicked
+            || right.rightClicked))
+        {
+            Debug.Log("shoot else condition");
             Shoot();
         }
 
@@ -167,8 +175,11 @@ public class Player : MonoBehaviour
         }
     }
 
+    string currentlyFacing;
+
     void SetPlayerNewPosition(string direction)
     {
+        currentlyFacing = direction;
         bool flag = true;
         diceCount--;
         Debug.Log("CURRENT POSITION BEFORE MOVEMNET::::::"+currentPosition);
@@ -437,8 +448,31 @@ public class Player : MonoBehaviour
     GameObject bullet2;
     public GameObject knifeWeapon;
     public GameObject gun;
-    public Block clicked;
-    public Sprite darkCircle;
+    bool prefaceShootOnce = false;
+    bool clicked = false;
+    bool ShootOnce = false;
+    
+    void ShootPreface()
+    {
+        FindObjectOfType<BackgroundControl>().normalModeActive = false;
+            transform.GetChild(3).gameObject.SetActive(true);
+
+            stat.transform.parent.GetChild(2).gameObject.SetActive(false);
+            if (placedOnBlock.type != 0)
+            {
+                stat.transform.parent.GetChild(5).gameObject.SetActive(true);
+            }
+            else
+            {
+                stat.transform.parent.GetChild(4).gameObject.SetActive(true);
+            }
+
+
+            StartCoroutine(BulletBack());
+            prefaceShootOnce = true;
+    }
+
+    public GameObject opponent;
 
     void Shoot()
     {
@@ -451,38 +485,144 @@ public class Player : MonoBehaviour
                 angle += 0.1f;
             }*/
             Debug.Log(angle);
+            
         }
         else
         {
-            FindObjectOfType<BackgroundControl>().normalModeActive = false;
-            //transform.GetChild(3).gameObject.SetActive(true);
-            bullet2 = Instantiate(bullet, this.transform);
-            bullet2.SetActive(true);
-            Rigidbody2D rb = bullet2.GetComponent<Rigidbody2D>();
+            Debug.Log("i have been chpsen");
+                bullet2 = Instantiate(bullet, this.transform);
+                bullet2.SetActive(true);
+                Rigidbody2D rb = bullet2.GetComponent<Rigidbody2D>();
+            Vector3 curr = placedOnBlock.obj.transform.position;
+            float tileSize = placedOnBlock.obj.GetComponent<RectTransform>().rect.width;
+            int factor = 10;
+            Vector3 target = curr - new Vector3(0, placedOnBlock.obj.transform.position.y + factor * tileSize, 0);
+            
+            int range = 1;
 
-            rb.velocity = bullet2.transform.up * 800;
-            StartCoroutine(BulletBack());
             if (stat.transform.Find("WeaponUI").Find("CurrentWeapon").tag == "Pistol")
             {
-                // range 4 blocks
-                
+                range = 4;
             }
             else if (stat.transform.Find("WeaponUI").Find("CurrentWeapon").tag == "Rifle")
             {
-                // range 6 blocks
+                range = 6;
             }
             else if (stat.transform.Find("WeaponUI").Find("CurrentWeapon").tag == "Sniper")
             {
-                // range 8 blocks
+                range = 9;
             }
+            
+            if (top.topClicked)
+            {
+                target = curr - new Vector3(0, placedOnBlock.obj.transform.position.y + factor * tileSize, 0);
+            }
+            else if (right.rightClicked)
+                target = curr - new Vector3(placedOnBlock.obj.transform.position.y + factor * tileSize, 0, 0);
+            else if (left.leftClicked)
+                target = curr - new Vector3(-(placedOnBlock.obj.transform.position.y + factor * tileSize), 0, 0);
+            else if (down.downClicked)
+                target = curr - new Vector3(0, -(placedOnBlock.obj.transform.position.y + factor * tileSize), 0);
+            rb.velocity = (target) * 10;
+
+            killOpponent(range);
         }
         shoot.shootClicked = knife.GetComponent<NavigationEase>().knifeClicked = false;
+        right.rightClicked = left.leftClicked = top.topClicked = down.downClicked =
+                topright.toprightClicked = topleft.topleftClicked = bottomleft.bottomleftClicked = bottomright.bottomrightClicked = false;
     }
 
     IEnumerator BulletBack()
     {
-        yield return new WaitForSeconds(5);
-        Destroy(bullet2);
+        yield return new WaitForSeconds(1);
+        //Destroy(bullet2);
         FindObjectOfType<BackgroundControl>().normalModeActive = true;
+
+        transform.GetChild(3).gameObject.SetActive(false);
+        stat.transform.parent.GetChild(2).gameObject.SetActive(true);
+        stat.transform.parent.GetChild(4).gameObject.SetActive(false);
+        stat.transform.parent.GetChild(5).gameObject.SetActive(false);
+    }
+
+    private IEnumerator waitForbullet()
+    {
+        yield return new WaitForSeconds(2);
+        Destroy(bullet2);
+    }
+
+    public GameObject opponentStat;
+
+    void killOpponent(int range)
+    {
+        int i = 0;
+        foreach(Block b in map.blocks)
+        {
+            if (b == placedOnBlock)
+                break;
+            i++;
+        }
+        if (top.topClicked)
+        {
+            while (range > 0 && i > 0)
+            {
+                if (opponent.GetComponent<Player>().placedOnBlock.pos == map.blocks[i].pos)
+                {
+                    int a = int.Parse(stat.transform.Find("Health").Find("Number").GetComponent<Text>().text);
+                    a-=2;
+                    stat.transform.Find("Health").Find("Number").GetComponent<Text>().text = a.ToString();
+                    break;
+                }
+                i -= 20;
+                range--;
+                }
+        }
+        else if (right.rightClicked)
+        {
+            while (range > 0 && i < 400)
+            {
+                if (opponent.GetComponent<Player>().placedOnBlock.pos == map.blocks[i].pos)
+                {
+                    int a = int.Parse(stat.transform.Find("Health").Find("Number").GetComponent<Text>().text);
+                    a -= 2;
+                    stat.transform.Find("Health").Find("Number").GetComponent<Text>().text = a.ToString();
+                    break;
+                }
+                i +=1;
+                range--;
+                Debug.Log("player not found");
+            }
+        }
+        else if (left.leftClicked)
+        {
+            while (range > 0 && i > 0)
+            {
+                if (opponent.GetComponent<Player>().placedOnBlock.pos == map.blocks[i].pos)
+                {
+                    int a = int.Parse(stat.transform.Find("Health").Find("Number").GetComponent<Text>().text);
+                    a -= 2;
+                    stat.transform.Find("Health").Find("Number").GetComponent<Text>().text = a.ToString();
+                    break;
+                }
+                i -=1;
+                range--;
+                Debug.Log("player not found");
+            }
+        }
+        else if (down.downClicked)
+        {
+            while (range > 0 && i < 400)
+            {
+                if (opponent.GetComponent<Player>().placedOnBlock.pos == map.blocks[i].pos)
+                {
+                    int a = int.Parse(stat.transform.Find("Health").Find("Number").GetComponent<Text>().text);
+                    a -= 2;
+                    stat.transform.Find("Health").Find("Number").GetComponent<Text>().text = a.ToString();
+                    break;
+                }
+                i += 20;
+                range--;
+                Debug.Log("player not found");
+            }
+        }
     }
 }
