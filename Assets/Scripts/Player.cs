@@ -473,6 +473,10 @@ public class Player : MonoBehaviour
     }
 
     public GameObject opponent;
+    public AudioSource rifle;
+    public AudioSource pistol;
+    public AudioSource sniper;
+
 
     void Shoot()
     {
@@ -502,29 +506,41 @@ public class Player : MonoBehaviour
 
             if (stat.transform.Find("WeaponUI").Find("CurrentWeapon").tag == "Pistol")
             {
+                pistol.Play();
                 range = 4;
             }
             else if (stat.transform.Find("WeaponUI").Find("CurrentWeapon").tag == "Rifle")
             {
+                rifle.Play();
                 range = 6;
             }
             else if (stat.transform.Find("WeaponUI").Find("CurrentWeapon").tag == "Sniper")
             {
+                sniper.Play();
                 range = 9;
             }
             
             if (top.topClicked)
             {
-                target = curr - new Vector3(0, placedOnBlock.obj.transform.position.y + factor * tileSize, 0);
+                //target = curr - new Vector3(0, placedOnBlock.obj.transform.position.y + factor * tileSize, 0);
+                rb.velocity = bullet2.transform.up*1000;
             }
             else if (right.rightClicked)
-                target = curr - new Vector3(placedOnBlock.obj.transform.position.y + factor * tileSize, 0, 0);
+            {
+                //target = curr - new Vector3(placedOnBlock.obj.transform.position.y + factor * tileSize, 0, 0);
+                rb.velocity = bullet2.transform.right * 1000;
+            }
             else if (left.leftClicked)
-                target = curr - new Vector3(-(placedOnBlock.obj.transform.position.y + factor * tileSize), 0, 0);
+            {
+                //target = curr + new Vector3(-(placedOnBlock.obj.transform.position.y + factor * tileSize), 0, 0);
+                rb.velocity = -bullet2.transform.right * 1000;
+            }
             else if (down.downClicked)
-                target = curr - new Vector3(0, -(placedOnBlock.obj.transform.position.y + factor * tileSize), 0);
-            rb.velocity = (target) * 10;
-
+            {
+                //target = curr + new Vector3(0, -(placedOnBlock.obj.transform.position.y + factor * tileSize), 0);
+                rb.velocity = -bullet2.transform.up * 1000;
+            }
+            StartCoroutine(waitForbullet());
             killOpponent(range);
         }
         shoot.shootClicked = knife.GetComponent<NavigationEase>().knifeClicked = false;
@@ -546,7 +562,7 @@ public class Player : MonoBehaviour
 
     private IEnumerator waitForbullet()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(0.1f);
         Destroy(bullet2);
     }
 
@@ -574,6 +590,7 @@ public class Player : MonoBehaviour
                 }
                 i -= 20;
                 range--;
+                Debug.Log("player not found");
                 }
         }
         else if (right.rightClicked)
