@@ -533,12 +533,12 @@ public class Player : MonoBehaviour
             else if (left.leftClicked)
             {
                 //target = curr + new Vector3(-(placedOnBlock.obj.transform.position.y + factor * tileSize), 0, 0);
-                rb.velocity = -bullet2.transform.right * 1000;
+                rb.velocity = -(bullet2.transform.right * 1000);
             }
             else if (down.downClicked)
             {
                 //target = curr + new Vector3(0, -(placedOnBlock.obj.transform.position.y + factor * tileSize), 0);
-                rb.velocity = -bullet2.transform.up * 1000;
+                rb.velocity = -(bullet2.transform.up * 1000);
             }
             StartCoroutine(waitForbullet());
             killOpponent(range);

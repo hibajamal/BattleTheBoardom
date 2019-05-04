@@ -8973,6 +8973,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7268ff1786004745affe3b13eb4eb0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameover: {fileID: 1322093026}
 --- !u!1 &1956709640
 GameObject:
   m_ObjectHideFlags: 0
