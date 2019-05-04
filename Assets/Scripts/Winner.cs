@@ -11,6 +11,16 @@ public class Winner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // check health condition
+        if (int.Parse(p1.transform.Find("Health").Find("Number").GetComponent<Text>().text) < int.Parse(p2.transform.Find("Coin").Find("Number").GetComponent<Text>().text))
+        {
+            GetComponent<Text>().text = "Player 1 wins!!!";
+        }
+        else if (int.Parse(p1.transform.Find("Health").Find("Number").GetComponent<Text>().text) > int.Parse(p2.transform.Find("Coin").Find("Number").GetComponent<Text>().text))
+        {
+            GetComponent<Text>().text = "Player 2 wins!!";
+        }
+        // check money
         if (int.Parse(p1.transform.Find("Coin").Find("Number").GetComponent<Text>().text) < int.Parse(p2.transform.Find("Coin").Find("Number").GetComponent<Text>().text))
         {
             GetComponent<Text>().text = "Player 1 wins!!!";
